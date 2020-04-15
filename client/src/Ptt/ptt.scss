@@ -112,13 +112,11 @@ a {
     margin: 10px 10px;
     position: relative;
 
-    .showBtn {
-      display: block;
-      z-index: 99;
-    }
     span {
-      display: none;
+      // display: none;
+      z-index: -1;
       position: absolute;
+      left: 0;
       bottom: 5px;
       width: 100%;
       padding: auto;
@@ -129,6 +127,11 @@ a {
         border: 0;
       }
     }
+    span.showBtn {
+      @extend span;
+      // display: block;
+      z-index: 99;
+    }
   }
   img {
     width: 100%;
@@ -136,7 +139,22 @@ a {
     box-shadow: 0 0.3rem 2rem lightgray;
   }
 }
-
+@media (max-width: 992px) {
+  .articleImgs {
+    margin: 0 auto;
+    padding: 0;
+    column-count: 2;
+    column-gap: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .articleImgs {
+    margin: 0 auto;
+    padding: 0;
+    column-count: 1;
+    column-gap: 10px;
+  }
+}
 .imgbrowse {
   border-radius: 20px;
   padding: 0;

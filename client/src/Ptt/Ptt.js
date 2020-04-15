@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Card,Select,Carousel } from 'antd';
+import { Card,Select,Carousel, Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom'
 import { AiOutlineDown,AiOutlineUp } from 'react-icons/ai';
 import $ from 'jquery'
@@ -11,6 +12,7 @@ const Ptt = (props) =>{
     const [sortMethod,setSortMethod] =useState('0')
     const [top3,setTop3] =useState([])
     const [top3articlecontent,setTop3articlecontent] = useState([])
+    const [isloadingImg,setIsloadingImg] = useState(true)
     console.log('props',props)
     useEffect(()=>{
         fetch('/getptt',{
@@ -112,6 +114,7 @@ const Ptt = (props) =>{
         .then(data=>{
             console.log(data)
             setTop3articlecontent(data)
+            setIsloadingImg(false)
         }
         )
 
@@ -140,7 +143,7 @@ const Ptt = (props) =>{
     const top4article = topContentData.slice(0,4).map((item,index)=>(
         <div className="d-flex pl-3" key={index}>
         <span>{item.count}</span>
-        <div>{item.titleText}</div>
+        <div><a href={item.link} target="_blank">{item.titleText}</a></div>
         </div>
     ))
     // console.log('排序',topContentData)
@@ -217,6 +220,16 @@ const Ptt = (props) =>{
         let currenttime = new Date().toLocaleTimeString()
         return currenttime
     }
+    // loading 圖片start
+    const antIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
+    const loading = (
+        <div className="text-center mt-3">
+        <Spin indicator={antIcon} />
+        </div>
+    ) 
+    // loading 圖片end
+        
+   
     return (
     <>
     <div className="container">
@@ -265,9 +278,10 @@ const Ptt = (props) =>{
                 
                 {top4article}
             </div>
-            {/* 圖片瀏覽 */}
+            {/* 圖文瀏覽 */}
             
             <div className="col-12 col-md-8 imgbrowse">
+                
                 <p>圖文瀏覽
                     <button id="up2"  onClick={(e)=>handleHide2(e.target)}>
                        <AiOutlineUp/> 
@@ -276,15 +290,16 @@ const Ptt = (props) =>{
                         <AiOutlineDown />
                     </button>
                 </p>
+                {isloadingImg?loading:
                 <div className="articleImgs">
-            {top3articlecontent.map((item,index)=>{
+                    {top3articlecontent.map((item,index)=>{
                     return (
                         <Child1 key={index} imgs={item.img} link={item.url}/>
                     )
-                
-                    
+
                 })}
                 </div>
+                }
             </div>
         </div>
         <div className="d-flex flex-wrap justify-content-around allarticle">

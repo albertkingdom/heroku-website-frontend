@@ -16,14 +16,15 @@ function App() {
       <Header/>
       <div style={{paddingTop:'50px'}}>
       <Switch>
-        <Route path="/">
-          <Ptt/>
-        </Route>
+        
         <Route path="/ptt">
           <Ptt/>
         </Route>
         <Route path="/todo">
           <Todo/>
+        </Route>
+        <Route path="/">
+          <Ptt/>
         </Route>
         <Route>
           <Page404/>
