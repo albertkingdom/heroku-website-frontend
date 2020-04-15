@@ -114,7 +114,7 @@ a {
 
     span {
       // display: none;
-      z-index: 0;
+      z-index: 2;
       position: absolute;
       left: 0;
       bottom: 5px;
@@ -130,11 +130,12 @@ a {
     span.showBtn {
       @extend span;
       // display: block;
-      z-index: 99;
+      // z-index: 99;
     }
   }
   img {
     width: 100%;
+    background: transparent;
     // margin: 10px auto;
     box-shadow: 0 0.3rem 2rem lightgray;
   }
