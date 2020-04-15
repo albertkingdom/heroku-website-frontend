@@ -206,8 +206,8 @@ const Ptt = (props) =>{
                     <img  src={'https://'+url+'.jpg'} 
                     ></img>
                     <span>
-                        <a href={link} target="_blank"><button>看文章</button></a>
-                        <a href={'https://'+url+'.jpg'} target="_blank"><button>看圖片</button></a>
+                        <button><a href={link} target="_blank">看文章</a></button>
+                        <button><a href={'https://'+url+'.jpg'} target="_blank">看圖片</a></button>
                     </span>
                     </div>
                     )
