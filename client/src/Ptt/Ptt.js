@@ -205,10 +205,10 @@ const Ptt = (props) =>{
                     >
                     <img  src={'https://'+url+'.jpg'} 
                     ></img>
-                    <span>
+                    <div className="btnforimg">
                         <button><a href={link} target="_blank">看文章</a></button>
                         <button><a href={'https://'+url+'.jpg'} target="_blank">看圖片</a></button>
-                    </span>
+                    </div>
                     </div>
                     )
                 })}
