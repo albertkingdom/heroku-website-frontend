@@ -21,8 +21,8 @@ const Ptt = (props) =>{
             // console.log(data);
             const noundefinedurl = data.filter(url=>!url.link.match(/undefined/gm))//去掉被刪除文章，網址undefined
             for(let i=0;i<noundefinedurl.length;i++){
-                noundefinedurl[i].count.replace(/X/gm,'-')
-                noundefinedurl[i].count.replace(/爆/gm,'100')
+                noundefinedurl[i].count = noundefinedurl[i].count.replace(/X/gm,'-')
+                noundefinedurl[i].count = noundefinedurl[i].count.replace(/爆/gm,'100')
                 console.log(noundefinedurl[i].count)
             }
            
@@ -197,7 +197,7 @@ const Ptt = (props) =>{
                     ></img>
                     <span>
                         <a href={link} target="_blank"><button>看文章</button></a>
-                        <a href={'http://'+url+'.jpg'} target="_blank"><button>看圖片</button></a>
+                        <a href={'https://'+url+'.jpg'} target="_blank"><button>看圖片</button></a>
                     </span>
                     </div>
                     )
@@ -223,8 +223,9 @@ const Ptt = (props) =>{
         {/* <h5>更新時間:{new Date().toLocaleTimeString()}</h5>
         <Clock/> */}
         <div className="d-flex justify-content-around flex-wrap my-3">
-            <p style={{fontSize:'20px',margin:'0'}}>目前顯示{pttTitle.length}篇文章</p>
+            <p className="col-11 col-md-3 my-2" style={{fontSize:'20px',margin:'0'}}>目前顯示{pttTitle.length}篇文章</p>
             <Select 
+            className="col-11 col-md-3 my-2"
             defaultValue="推文數篩選" 
             style={{ width: 200 }} 
             onChange={handleChange}>
@@ -233,6 +234,7 @@ const Ptt = (props) =>{
                 <Option value="0">0</Option>
             </Select>
             <Select
+            className="col-11 col-md-3 my-2"
             defaultValue="排序方式" 
             style={{ width: 200 }} 
             onChange={handleSort}>
