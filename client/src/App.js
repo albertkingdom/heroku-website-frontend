@@ -10,10 +10,7 @@ import Page404 from './component/Page404'
 
 function App() {
   return (
-    // <div className="App">
-    //   <Header />
-    //   <Todo/>
-    // </div>
+    
     <Router>
       <>
       <Header/>
