@@ -27,7 +27,7 @@ export const deltodolist = (id) =>{
 export const savetoserver = (todo) => {
     return async dispatch => {
         // 注意資料格式要設定，伺服器才知道是json格式
-        const request = new Request('http://localhost:6001/todolist/savetodb', {
+        const request = new Request('/todolist/savetodb', {
             method: 'POST',
             body: JSON.stringify({content:'123',title:'123'}),
             headers: new Headers({
@@ -45,7 +45,7 @@ export const savetoserver = (todo) => {
 //從database抓回資料
 export const getDatafromserverAsync = () => {
     return dispatch => {
-        fetch('http://localhost:6001/todolist/gettodo',{
+        fetch('/todolist/gettodo',{
             method:'GET',
             headers: new Headers({
                 Accept: 'application/json',
@@ -67,7 +67,7 @@ export const delDatafromserverAsync = (obj) =>{
     return dispatch => {
         let body = JSON.parse(obj)
         console.log('del_body',JSON.stringify(body))
-        fetch('http://localhost:6001/todolist/deltodo',{
+        fetch('/todolist/deltodo',{
             method:'POST',
             body:JSON.stringify(body),
             headers: new Headers({

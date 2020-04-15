@@ -22,7 +22,7 @@ function Todo(props){
     async function localsavetosrv(todo){
         const request = new Request(
             
-            'http://localhost:6001/todolist/savetodb',
+            '/todolist/savetodb',
             {
               method: 'post',
               body:JSON.stringify(todo),
@@ -56,7 +56,7 @@ async function localdelDatafromserver(id){
         
         const request = new Request(
             
-            'http://localhost:6001/todolist/deltodo',
+            '/todolist/deltodo',
             {
               method: 'post',
               body:JSON.stringify(body),
@@ -83,7 +83,7 @@ const localupdatetoserver = (id) =>{
         content:editTodo
     }
     
-    fetch('http://localhost:6001/todolist/updatetodo',
+    fetch('/todolist/updatetodo',
     {
       method: 'post',
       body:JSON.stringify(body),
@@ -102,7 +102,7 @@ const localCompletetoServer = (id) =>{
     let body={completeid:id,
         }
     
-    fetch('http://localhost:6001/todolist/completetodo',
+    fetch('/todolist/completetodo',
     {
       method: 'put',
       body:JSON.stringify(body),

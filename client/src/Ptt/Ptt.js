@@ -13,7 +13,7 @@ const Ptt = (props) =>{
     const [top3articlecontent,setTop3articlecontent] = useState([])
     console.log('props',props)
     useEffect(()=>{
-        fetch('http://localhost:6001/getptt',{
+        fetch('/getptt',{
             method:'GET'
         })
         .then(res=>res.json())
@@ -100,7 +100,7 @@ const Ptt = (props) =>{
     //    console.log(url)
         let body={url:url}
         // console.log('body',body)
-        fetch('http://localhost:6001/getptt/top3',
+        fetch('/getptt/top3',
         {
         method: 'post',
         body:JSON.stringify(body),
