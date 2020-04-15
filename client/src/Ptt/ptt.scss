@@ -1,0 +1,171 @@
+//推文數
+.ptt-count {
+  margin-right: 10px;
+  width: 30px;
+  display: inline-block;
+  color: blue;
+}
+.ptt-title {
+  font-size: 20px;
+  border-bottom: 1px dashed lightgrey;
+  //   border-radius: 10px;
+  padding: 10px 20px;
+  margin: 5px;
+  box-shadow: 0px 1px 5px lightgrey;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Carousel for topContent
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 300px;
+  line-height: 160px;
+  //   background: #364d79;
+  overflow: hidden;
+}
+
+//carousel 熱門文章內容
+.hotarticle {
+  position: relative;
+  top: -60px;
+  width: 100%;
+  line-height: 36px;
+  margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+a {
+  color: black;
+  &:hover {
+    color: gray;
+  }
+}
+.topImg {
+  width: 1100px;
+  height: 300px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  opacity: 0.3;
+  filter: blur(5px);
+  z-index: 0;
+}
+
+.top4 {
+  //   height: 200px;
+  //   border: 1px solid black;
+
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  background: whitesmoke;
+  transition: 0.3s;
+  p {
+    height: 60px;
+    background: linear-gradient(to right, #fc4a1a, #f7b733);
+    padding: 10px 20px;
+    font-size: 24px;
+    color: white;
+  }
+  div > div {
+    height: 120px;
+    font-size: 20px;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+    overflow: hidden;
+    // white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+  span {
+    font-size: 20px;
+    padding-top: 20px;
+  }
+  button {
+    background: transparent;
+    border: 0;
+    float: right;
+  }
+}
+
+.articleImgs {
+  background: whitesmoke;
+  margin: 0 auto;
+  padding: 0;
+  column-count: 3;
+  column-gap: 10px;
+  transition: 0.3s;
+  div {
+    margin: 10px 10px;
+    position: relative;
+    // &:hover {
+    //   button {
+    //     display: inline-block;
+    //   }
+    // }
+    .showBtn {
+      display: block;
+    }
+    span {
+      display: none;
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      padding: auto;
+      button {
+        width: 50%;
+        background: lightgray;
+        opacity: 70%;
+        border: 0;
+      }
+    }
+  }
+  img {
+    width: 100%;
+    // margin: 10px auto;
+    box-shadow: 0 0.3rem 2rem lightgray;
+  }
+}
+
+.imgbrowse {
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 5px;
+  overflow: hidden;
+
+  p {
+    height: 60px;
+    background: linear-gradient(to right, #fc4a1a, #f7b733);
+    padding: 10px 20px;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+  }
+  button {
+    background: transparent;
+    border: 0;
+    float: right;
+  }
+}
+
+.allarticle {
+  border-radius: 20px;
+  padding: 10px;
+  overflow: hidden;
+  background: whitesmoke;
+  transition: 0.3s;
+  margin-top: 10px;
+}

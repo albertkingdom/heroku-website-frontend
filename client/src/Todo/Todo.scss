@@ -1,0 +1,25 @@
+.todocard{
+    box-shadow: 0 5px 5px gray;
+    $bgcolorlist : yellow, skyblue;
+    $random:random(length($bgcolorlist));
+    $background-color: nth($bgcolorlist, $random);
+    background-color: $background-color;
+    height: 300px;
+    p {
+        border-bottom: 1px solid coral; 
+    }
+    
+}
+
+.card-del-btn{
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+}
+.card-check-btn{
+    @extend .card-del-btn;
+    right: 25px;
+}
+.card-edit-btn{
+    @extend .card-del-btn;
+}
