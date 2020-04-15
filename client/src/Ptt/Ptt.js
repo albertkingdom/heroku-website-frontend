@@ -127,7 +127,7 @@ const Ptt = (props) =>{
                 <p  className="hotarticle col-5 ">
                     {article.text}
                 </p>
-                <img className="topImg" src={'http://'+article.img[0]+'.jpg'}></img>
+                <img className="topImg" src={'https://'+article.img[0]+'.jpg'}></img>
                 
                 </div>
                 :null
@@ -155,15 +155,20 @@ const Ptt = (props) =>{
         // console.log(`sort`, +value);
         setSortMethod(value)
     }
-    function handleImgHoverIn(element){
-        console.log(element)
-        $(element).next('span').addClass('showBtn')
-    }
-    function handleImgHoverOut(element){
-        console.log(element)
-        $(element).next('span').removeClass('showBtn')
-    }
-
+    // function handleImgHoverIn(element){
+    //     console.log(element)
+    //     $(element).next('span').addClass('showBtn')
+    // }
+    // function handleImgHoverOut(element){
+    //     console.log(element)
+    //     $(element).next('span').removeClass('showBtn')
+    // }
+    useEffect(()=>{
+        $('div.articleImgs > div > div').hover(function(){
+            console.log(this)
+            $(this).find('span').toggleClass('showBtn')
+        })
+    })
     function handleShow1(element){
         
             $('#down1').css('display','none')
@@ -191,9 +196,11 @@ const Ptt = (props) =>{
             <div >
                 {imgs.map(url=>{
                     return(
-                    <div onMouseEnter={(e)=>handleImgHoverIn(e.target)} 
-                    onMouseLeave={(e)=>handleImgHoverOut(e.target)}>
-                    <img  src={'http://'+url+'.jpg'} 
+                    <div key={url}
+                    //  onMouseEnter={(e)=>handleImgHoverIn(e.target)} 
+                    // onMouseLeave={(e)=>handleImgHoverOut(e.target)}
+                    >
+                    <img  src={'https://'+url+'.jpg'} 
                     ></img>
                     <span>
                         <a href={link} target="_blank"><button>看文章</button></a>
