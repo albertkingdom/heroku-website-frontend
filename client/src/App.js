@@ -6,6 +6,7 @@ import Todo from './Todo/Todo'
 import Ptt from './Ptt/Ptt'
 import Header from './Header'
 import Page404 from './component/Page404'
+import Home from './Home/Home'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <>
       <Header/>
       <div style={{paddingTop:'50px'}}>
+      
       <Switch>
         
         <Route path="/ptt">
@@ -24,7 +26,7 @@ function App() {
           <Todo/>
         </Route>
         <Route path="/">
-          <Ptt/>
+          <Home/>
         </Route>
         <Route>
           <Page404/>

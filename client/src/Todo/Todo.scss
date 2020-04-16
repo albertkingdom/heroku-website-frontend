@@ -1,25 +1,51 @@
-.todocard{
-    box-shadow: 0 5px 5px gray;
-    $bgcolorlist : yellow, skyblue;
-    $random:random(length($bgcolorlist));
-    $background-color: nth($bgcolorlist, $random);
-    background-color: $background-color;
-    height: 300px;
-    p {
-        border-bottom: 1px solid coral; 
-    }
-    
+.todocard {
+  box-shadow: 0 5px 5px gray;
+  $bgcolorlist: yellow, skyblue;
+  $random: random(length($bgcolorlist));
+  $background-color: nth($bgcolorlist, $random);
+  background-color: $background-color;
+  height: 300px;
+  p {
+    border-bottom: 1px solid coral;
+  }
 }
 
-.card-del-btn{
-    position: absolute;
-    right: 0px;
-    cursor: pointer;
+.card-del-btn {
+  position: absolute;
+  right: 0px;
+  float: right;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.5s;
+  span {
+    display: none;
+  }
+  &:hover {
+    span {
+      display: inline-block;
+    }
+  }
 }
-.card-check-btn{
-    @extend .card-del-btn;
-    right: 25px;
+.card-check-btn {
+  @extend .card-del-btn;
+  right: 50px;
 }
-.card-edit-btn{
-    @extend .card-del-btn;
+.card-edit-btn {
+  @extend .card-del-btn;
+}
+
+.btn-add {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: blue;
+  border: 0;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 30px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
 }

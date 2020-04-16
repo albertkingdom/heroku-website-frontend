@@ -8,7 +8,8 @@ import { Card,Button} from 'react-bootstrap'
 //css
 import './Todo.scss'
 //react-icon
-import { AiOutlineDelete,AiOutlineCheck,AiOutlineEdit } from "react-icons/ai"
+import { AiOutlineDelete,AiOutlineCheck,AiOutlineEdit,AiOutlinePushpin } from "react-icons/ai"
+import { Modal } from 'antd';
 
 function Todo(props){
 
@@ -18,6 +19,7 @@ function Todo(props){
     const [newtodo,setNewtodo] = useState('')
     const [editTodo,setEditTodo] = useState('')
     const [currentTodo,setCurrentTodo] = useState([])
+    const [visible,setVisible] =useState(false)
 //將todo存進database,以下
     async function localsavetosrv(todo){
         const request = new Request(
@@ -115,11 +117,42 @@ const localCompletetoServer = (id) =>{
     .then(props.onCompleteTodo(id))
 }
 
+    const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = e => {
+    console.log(e);
+    setVisible(false);
+    setNewtodo('');
+    localsavetosrv({content:newtodo,title:'123'});
+  };
+
+  const handleCancel = e => {
+    console.log(e);
+    setVisible(false);
+  };
     return (
     <>
     <div className="container">
-    <h1>ToDo List</h1>
-    <input type="text" value={newtodo} onChange={e=>setNewtodo(e.target.value)}></input>
+    <h1 className="text-center">ToDo List</h1>
+    <button className="btn-add" onClick={showModal}>+</button>
+    <Modal
+          title="請輸入待辦事項"
+          visible={visible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          okText="新增待辦"
+        >
+          <textarea rows="8" cols="60" 
+            value={newtodo} 
+            onChange={e=>setNewtodo(e.target.value)}
+            placeholder="請輸入待辦事項..."
+            style={{background:'transparent',border:'none'}}>
+
+            </textarea>
+    </Modal>
+    {/* <input type="text" value={newtodo} onChange={e=>setNewtodo(e.target.value)}></input>
     <button onClick={()=>{
         // props.onAddTodo(newtodo);
         setNewtodo('');
@@ -127,7 +160,40 @@ const localCompletetoServer = (id) =>{
         // props.getdata()
         }}>
             add to list
-    </button>
+    </button> */}
+
+    {/* 新增一筆to do */}
+    {/* <Card style={{ width: '18rem' }} className="m-2 todocard position-relative col-5">
+        
+                
+        <Card.Body>
+            
+            <button onClick={()=>{
+                
+                setNewtodo('');
+                localsavetosrv({content:newtodo,title:'123'});
+                // props.getdata()
+                }}
+                className="float-right btn btn-primary">
+                   新增待辦
+            </button>
+            <>
+            <Card.Text>
+            <textarea rows="8" cols="30" 
+            value={newtodo} 
+            onChange={e=>setNewtodo(e.target.value)}
+            placeholder="請輸入待辦事項..."
+            style={{background:'transparent',border:'none'}}>
+
+            </textarea>
+            
+            </Card.Text>
+            
+            </>
+            
+            
+        </Card.Body>
+    </Card> */}
     <hr/>
     {/* <ul>
         {props.currentTodo.map((todo,index)=>
@@ -141,12 +207,13 @@ const localCompletetoServer = (id) =>{
         )}
         
     </ul> */}
-    <div className="d-flex flex-wrap">
+    <div className="d-flex flex-wrap justify-content-around">
     {props.currentTodo.map((todo,index)=>
     todo.completed == 0 ?
-    <Card key={todo.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-5">
+    <Card key={todo.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-12 col-md-5">
         <span className="card-del-btn" onClick={()=>{localdelDatafromserver(todo.id);}} >
         <AiOutlineDelete style={{fontSize:'24px'}}/>
+        <span>刪除</span>
         </span>
         <span className="card-check-btn" 
         onClick={()=>{
@@ -155,10 +222,12 @@ const localCompletetoServer = (id) =>{
         }
         }>
         <AiOutlineCheck style={{fontSize:'24px'}}/>
+        <span>完成</span>
         </span>
+        <AiOutlinePushpin style={{fontSize:'24px'}}/>
         
         <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title></Card.Title>
             {!todo.edit?
             <>
             <Card.Text>
@@ -188,11 +257,11 @@ const localCompletetoServer = (id) =>{
     </div>
     <hr/>
     <h5>completed todo</h5>
-    <ul>
+    <div className="d-flex flex-wrap justify-content-around">
         {props.completelist.map((item) => {
             return (
                 
-            <Card key={item.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-5">
+            <Card key={item.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-12 col-md-5">
             <span className="card-del-btn" >
             <AiOutlineDelete style={{fontSize:'24px'}}/>
             </span>
@@ -201,7 +270,7 @@ const localCompletetoServer = (id) =>{
             </span>
             
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title></Card.Title>
                
                 
                 <Card.Text>
@@ -211,8 +280,8 @@ const localCompletetoServer = (id) =>{
             </Card.Body>
         </Card>
         )})}
-        
-    </ul>
+    </div>
+    
     </div>
     </>)
 }
