@@ -10,6 +10,7 @@ import './Todo.scss'
 //react-icon
 import { AiOutlineDelete,AiOutlineCheck,AiOutlineEdit,AiOutlinePushpin } from "react-icons/ai"
 import { Modal } from 'antd';
+import $ from 'jquery'
 
 function Todo(props){
 
@@ -116,22 +117,31 @@ const localCompletetoServer = (id) =>{
     .then(data=>{console.log(data)})
     .then(props.onCompleteTodo(id))
 }
-
+    //新增to do的modal
     const showModal = () => {
     setVisible(true);
   };
 
-  const handleOk = e => {
-    console.log(e);
-    setVisible(false);
-    setNewtodo('');
-    localsavetosrv({content:newtodo,title:'123'});
-  };
+    const handleOk = e => {
+        console.log(e);
+        setVisible(false);
+        setNewtodo('');
+        localsavetosrv({content:newtodo,title:'123'});
+    };
 
-  const handleCancel = e => {
-    console.log(e);
-    setVisible(false);
-  };
+    const handleCancel = e => {
+        console.log(e);
+        setVisible(false);
+    };
+  //改變card底色
+  const handleChangeBkgColor = e => {
+    //   console.log(e.target);
+      let colorData = e.target.style.background
+    //   console.log(colorData)
+      $(e.target).closest('.todocard').css('background-color',colorData)
+    //   console.log(aa)
+  }
+
     return (
     <>
     <div className="container">
@@ -225,8 +235,14 @@ const localCompletetoServer = (id) =>{
         <span>完成</span>
         </span>
         <AiOutlinePushpin style={{fontSize:'24px'}}/>
-        
+        {/* 顏色選擇 */}
+        <div className="d-flex">
+            <div className="color-select rounded-circle" style={{background:"skyblue"}} onClick={handleChangeBkgColor}></div>
+            <div className="color-select rounded-circle" style={{background:"orange"}} onClick={handleChangeBkgColor}></div>
+            <div className="color-select rounded-circle" style={{background:"yellow"}} onClick={handleChangeBkgColor}></div>
+        </div>
         <Card.Body>
+           
             <Card.Title></Card.Title>
             {!todo.edit?
             <>
@@ -238,7 +254,7 @@ const localCompletetoServer = (id) =>{
             </Card.Text>
            
             </>:
-            <input type="text" 
+            <textarea type="text" 
             className="col-10" 
             value={editTodo} 
             onChange={(e)=>setEditTodo(e.target.value)} 
@@ -256,7 +272,7 @@ const localCompletetoServer = (id) =>{
     )}
     </div>
     <hr/>
-    <h5>completed todo</h5>
+    <h1 className="text-center">已完成</h1>
     <div className="d-flex flex-wrap justify-content-around">
         {props.completelist.map((item) => {
             return (

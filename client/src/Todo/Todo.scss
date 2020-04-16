@@ -38,7 +38,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: blue;
+  background: gray;
   border: 0;
   color: white;
   font-size: 30px;
@@ -48,4 +48,12 @@
   bottom: 50px;
   right: 50px;
   z-index: 99;
+}
+
+//顏色選擇
+.color-select {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
 }

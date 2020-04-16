@@ -33,14 +33,18 @@ const Header = () =>{
     
         <div className="header-nav-items-rwd">
             <ul>
+                <li><a className="nav-link" href="/">Home</a></li>
                 <li><a className="nav-link" href="/todo">Todo</a></li>
                 <li><a className="nav-link" href="/ptt">Ptt八卦版</a></li>
+                <li><a className="nav-link" href="/project">資策會專題作品</a></li>
             </ul>
         </div>
         <div className="header-nav-items">
             <ul className="d-flex justify-content-center">
+                <li><a className="nav-link" href="/">Home</a></li>
                 <li><a className="nav-link" href="/todo">Todo</a></li>
                 <li><a className="nav-link" href="/ptt">Ptt八卦版</a></li>
+                <li><a className="nav-link" href="/project">資策會專題作品</a></li>
             </ul>
         </div>
 

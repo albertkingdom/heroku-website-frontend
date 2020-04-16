@@ -7,6 +7,7 @@ import Ptt from './Ptt/Ptt'
 import Header from './Header'
 import Page404 from './component/Page404'
 import Home from './Home/Home'
+import Project from './Project/Project';
 
 
 function App() {
@@ -18,7 +19,9 @@ function App() {
       <div style={{paddingTop:'50px'}}>
       
       <Switch>
-        
+        <Route path="/project">
+          <Project/>
+        </Route>
         <Route path="/ptt">
           <Ptt/>
         </Route>
