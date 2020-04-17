@@ -1,7 +1,11 @@
 import React from 'react'
 import './header.scss'
+import { withRouter,NavLink } from 'react-router-dom'
+
 
 const Header = () =>{
+   
+    
     return (
     <>
     {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +37,7 @@ const Header = () =>{
     
         <div className="header-nav-items-rwd">
             <ul>
-                <li><a className="nav-link" href="/">Home</a></li>
+                <li><a className="nav-link" to="/">Home</a></li>
                 <li><a className="nav-link" href="/todo">Todo</a></li>
                 <li><a className="nav-link" href="/ptt">Ptt八卦版</a></li>
                 <li><a className="nav-link" href="/project">資策會專題作品</a></li>
@@ -41,10 +45,10 @@ const Header = () =>{
         </div>
         <div className="header-nav-items">
             <ul className="d-flex justify-content-center">
-                <li><a className="nav-link" href="/">Home</a></li>
-                <li><a className="nav-link" href="/todo">Todo</a></li>
-                <li><a className="nav-link" href="/ptt">Ptt八卦版</a></li>
-                <li><a className="nav-link" href="/project">資策會專題作品</a></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/" exact>Home</NavLink></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/todo">Todo</NavLink></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/ptt">Ptt八卦版</NavLink></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/project">資策會專題作品</NavLink></li>
             </ul>
         </div>
 
