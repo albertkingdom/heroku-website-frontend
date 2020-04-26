@@ -16,12 +16,13 @@
   height: 20px;
   position: relative;
   top: 20px;
+  left: calc(-45vw);
   margin-left: 20px;
   cursor: pointer;
   span {
     display: block;
     height: 1px;
-    background-color: white;
+    background-color: black;
     position: relative;
     transition: all 0.3s ease-in-out;
     top: 0;
@@ -32,15 +33,19 @@
 }
 
 header {
-  background-color: black;
+  background-color: transparent;
+  // background: linear-gradient(to bottom, gray, transparent 100%);
   height: 50px;
   width: 100%;
   position: fixed;
   z-index: 99;
+  // opacity: 0.2;
+  // width: 70%;
+  margin: 0 auto;
 }
 
 .header-nav-items-rwd {
-  background-color: rgba(0, 0, 0, 0.822);
+  background-color: whitesmoke;
   width: 100%;
   height: 250px;
   position: absolute;
@@ -53,12 +58,13 @@ header {
   ul {
     margin-top: 20px;
     padding: 0px;
+    list-style-type: none;
 
     li a {
       display: block;
       height: 50px;
       padding-left: 20px;
-      color: white;
+      color: black;
       font-size: 20px;
     }
   }
@@ -69,20 +75,22 @@ header {
 
 .header-nav-items {
   display: none;
-  width: 100%;
+  width: 70%;
   position: absolute;
   top: 0px;
-  // margin: auto;
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 25px;
 
   ul {
     padding: 0px;
     margin: auto;
-
+    list-style-type: none;
     li a {
       display: block;
       height: 50px;
       padding-left: 20px;
-      color: white;
+      color: black;
       font-size: 20px;
     }
   }
@@ -106,5 +114,6 @@ body {
 }
 
 .activelink {
-  border-bottom: 3px solid whitesmoke;
+  // border-bottom: 3px solid whitesmoke;
+  background: lightgray;
 }

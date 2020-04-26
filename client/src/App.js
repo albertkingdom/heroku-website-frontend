@@ -8,6 +8,8 @@ import Header from './Header'
 import Page404 from './component/Page404'
 import Home from './Home/Home'
 import Project from './Project/Project';
+import Practice_lifehacker from './Practice/Practice_lifehacker';
+import Home_rev2 from './Home/Home_rev2';
 
 
 function App() {
@@ -15,10 +17,16 @@ function App() {
     
     <Router>
       <>
+      
       <Header/>
-      <div style={{paddingTop:'50px'}}>
+      {/* <div style={{paddingTop:'50px'}}> */}
       
       <Switch>
+        <Route exact path="/">
+          
+          <Home_rev2/>
+        </Route>
+        <div style={{paddingTop:'70px'}}>
         <Route path="/project">
           <Project/>
         </Route>
@@ -28,15 +36,17 @@ function App() {
         <Route path="/todo">
           <Todo/>
         </Route>
-        <Route path="/">
-          <Home/>
-        </Route>
-        <Route>
-          <Page404/>
+        <Route path="/practice_lifehacker">
+          <Practice_lifehacker/>
         </Route>
         
+        {/* <Route>
+          <Page404/>
+        </Route> */}
+        </div>
+        
       </Switch>
-      </div>
+      {/* </div> */}
       </>
     </Router>
   );

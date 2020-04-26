@@ -1,0 +1,17 @@
+div.notification {
+  width: 200px;
+  height: 80px;
+  clip-path: polygon(
+    0% 0%,
+    80% 0,
+    80% 35%,
+    100% 46%,
+    80% 57%,
+    80% 100%,
+    0 100%
+  );
+  background: rgb(46, 46, 228);
+  padding: 20px;
+  box-shadow: 2px 5px 2px black;
+  color: white;
+}

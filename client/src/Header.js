@@ -1,10 +1,23 @@
 import React from 'react'
 import './header.scss'
 import { withRouter,NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
+import $ from 'jquery'
 
 
 const Header = () =>{
-   
+   useEffect(()=>{
+       
+       $(window).scroll(function(){
+        let scrolltop = $(window).scrollTop()
+        
+        // if (scrolltop>=100){
+        //     $('header').css('background','rgba(0,0,0,1)')
+        // }else{
+        //     $('header').css('background','linear-gradient(to bottom, transparent, transparent 100%)')
+        // }
+       })
+   })
     
     return (
     <>
@@ -26,7 +39,7 @@ const Header = () =>{
             </ul>
         </div>
     </nav> */}
-    <header>
+    <header className="d-flex justify-content-center">
         <input type="checkbox" id="toggler"></input>
         <label htmlFor="toggler">
         <div className="hamburger-container">
