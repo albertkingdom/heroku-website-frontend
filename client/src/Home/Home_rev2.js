@@ -3,6 +3,7 @@ import './Home_rev2.scss'
 import { Timeline } from 'antd';
 import Notification from '../component/Notification'
 import $ from 'jquery';
+import { AiFillGithub,AiFillLinkedin } from 'react-icons/ai'
 function Home_rev2(){
 
     const [mode, setMode] = useState('left');
@@ -31,15 +32,15 @@ function Home_rev2(){
         <div class="d-flex justify-content-center website-intro">
         
             <div class="intro col-2">
-                <h4>Ptt八卦版</h4>
+                <h4><a href="/ptt">Ptt八卦版</a></h4>
                 <p>
-                以Node.jS即時爬取PTT八卦版文章和圖片，包含推文排序功能、以圖瀏覽文章功能
+                即時爬取PTT八卦版文章和圖片，包含推文排序功能、以圖瀏覽文章功能，運用React.js結合Node.js
                 </p>
                 <a href="/ptt">看更多</a>
             </div>
             <div class="intro col-2">
-                <h4>資策會專題作品</h4>
-                <p>資策會專題作品的主要頁面截圖，運用React.js結合Node.js</p>
+                <h4><a href="/project">資策會專題作品</a></h4>
+                <p>資策會專題作品的主要頁面截圖，為一個販售遊戲的電商平台的商品頁面，運用React.js結合Node.js存取database資料</p>
                 <a href="/project">看更多</a>
             </div>
         </div>
@@ -56,7 +57,7 @@ function Home_rev2(){
               <li>HTML</li>
               <li>CSS/SCSS</li>
               <li>JavaScript ES6</li>
-              <li>React.JS</li>
+              <li>React.js</li>
               
             </ul>
           </div>
@@ -66,7 +67,8 @@ function Home_rev2(){
           <div class="toprow first">後端技能</div>
           <div class="box col-6">
             <ul>
-              <li>Node.JS</li>
+              <li>Node.js</li>
+              <li>MySQL</li>
             </ul>
           </div>
         </div>
@@ -74,12 +76,18 @@ function Home_rev2(){
 
       <div class="col-3 right">
         <h4><b>About Me</b></h4>
-        <div class="avator"></div>
-        <p>林煜凱</p>
+        {/* <div class="avator"></div> */}
+        <p>林煜凱 Albert Lin</p>
         <p style={{'fontSize':'16px'}}>albertkingdom@gmail.com</p>
+        <div className="d-flex justify-content-center" id="links">
+          <a href="https://github.com/albertkingdom"><AiFillGithub/></a>
+          <a href=""><AiFillLinkedin/></a>
+        </div>
+        
         <Timeline mode={mode} style={{marginTop:'10px'}}>
             <Timeline.Item label="2020 Apr">資策會前端工程師養成班結業</Timeline.Item>
             <Timeline.Item label="2016-2018 Dec">儀控工程師</Timeline.Item>
+            <Timeline.Item label="2015">碩士班畢業</Timeline.Item>
             
         </Timeline>
       </div>
