@@ -10,6 +10,7 @@ import Home from './Home/Home'
 import Project from './Project/Project';
 import Practice_lifehacker from './Practice/Practice_lifehacker';
 import Home_rev2 from './Home/Home_rev2';
+import Timeline from './timeline/Timeline'
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/practice_lifehacker">
           <Practice_lifehacker/>
+        </Route>
+        <Route path="/timeline">
+          <Timeline/>
         </Route>
         
         {/* <Route>

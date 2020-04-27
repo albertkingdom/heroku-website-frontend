@@ -1,0 +1,95 @@
+ul.timeline {
+  padding: 100px 0;
+
+  li {
+    width: 50%;
+    position: relative;
+    // margin: 20px 0;
+  }
+  li:nth-child(odd) {
+    float: left;
+    padding-right: 100px;
+  }
+  li:nth-child(even) {
+    float: left;
+    padding-left: 100px;
+    transform: translateY(50%);
+  }
+  //   橫線
+  li:nth-child(odd)::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+  li:first-child::after {
+    // height: 50%;
+  }
+  li:last-child::after {
+    height: 50%;
+  }
+  //   圓點
+  li::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #aaa;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  li:nth-child(odd)::before {
+    right: -10px;
+  }
+  li:nth-child(even)::before {
+    left: -10px;
+  }
+  a {
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #888;
+    &:hover {
+      background-color: #6fa5f6;
+    }
+  }
+  h2 {
+    // position: relative;
+  }
+  h2::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100px;
+    background-color: #ccc;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  li:nth-child(odd) h2::after {
+    right: 0;
+  }
+  li:nth-child(even) h2::after {
+    left: 0;
+  }
+  p {
+  }
+}
+div.container::after {
+  content: "";
+  height: 20px;
+  display: block;
+  clear: both;
+}

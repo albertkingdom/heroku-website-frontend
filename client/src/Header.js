@@ -62,6 +62,7 @@ const Header = () =>{
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/todo">Todo</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/ptt">Ptt八卦版</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/project">資策會專題作品</NavLink></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/timeline">切版練習</NavLink></li>
             </ul>
         </div>
 
