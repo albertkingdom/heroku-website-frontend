@@ -93,3 +93,22 @@ div.container::after {
   display: block;
   clear: both;
 }
+div.container h1 {
+  display: flex;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 200px;
+    border: 1px solid lightslategrey;
+    margin: auto;
+    background-color: lightslategrey;
+  }
+  &::before {
+    margin-right: 20px;
+  }
+  &::after {
+    margin-left: 20px;
+  }
+}

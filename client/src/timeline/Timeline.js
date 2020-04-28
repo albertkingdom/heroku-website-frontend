@@ -5,7 +5,7 @@ function Timeline(){
     return (
         <>
         <div className="container">
-            <h1>時間軸切版練習</h1>
+            <h1 className="text-center">時間軸切版練習</h1>
         <ul className="timeline">
             <li>
                 <a href="#">
