@@ -65,6 +65,8 @@ app.post('/test',(req,res)=>{
   console.log('req.body:',req.body)
 })
 
+app.use("/hitcount",require(__dirname + "/routes/hitcount"));
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('/*', (req, res) => {

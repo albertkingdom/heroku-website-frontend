@@ -5,6 +5,7 @@ import Notification from '../component/Notification'
 import $ from 'jquery';
 import { AiFillGithub,AiFillLinkedin } from 'react-icons/ai'
 import Square from './square'
+import Hit_counter from './Hit_counter'
 function Home_rev2(){
 
     const [mode, setMode] = useState('left');
@@ -32,7 +33,7 @@ function Home_rev2(){
         
         <div class="d-flex justify-content-center website-intro">
         
-            <div class="intro col-2">
+            <div class="intro col-md-2 col-5">
                 <img src="./blah.jpg"></img>
                 <h4><a href="/ptt">Ptt八卦版</a></h4>
                 <p>
@@ -40,7 +41,7 @@ function Home_rev2(){
                 </p>
                 <a href="/ptt">看更多</a>
             </div>
-            <div class="intro col-2">
+            <div class="intro col-md-2 col-5">
                 <img src="./presentation.jpg"></img>
                 <h4><a href="/project">資策會專題作品</a></h4>
                 <p>資策會專題作品的主要頁面截圖，為一個販售遊戲的電商平台的商品頁面，運用React.js結合Node.js存取database資料</p>
@@ -51,8 +52,8 @@ function Home_rev2(){
             {/* <Notification/> */}
             <img className="img-fluid" src="./mickeyhand.png"/>
         </div>
-    <div class="self-intro d-flex justify-content-center">
-      <div class="col-6 left">
+    <div class="self-intro d-flex justify-content-center flex-wrap">
+      <div class="col-md-5 col-11 left">
         {/* <div class="d-flex"> */}
           {/* <div class="toprow first">前端技能</div> */}
           {/* <div class="box col-6"> */}
@@ -67,7 +68,7 @@ function Home_rev2(){
           {/* </div> */}
         {/* </div> */}
 
-        <div class="d-flex mt-3 toprow2">
+        {/* <div class="d-flex mt-3 toprow2"> */}
           {/* <div class="toprow first">後端技能</div> */}
           {/* <div class="box col-6"> */}
             {/* <ul>
@@ -75,10 +76,10 @@ function Home_rev2(){
               <li>MySQL</li>
             </ul> */}
           {/* </div> */}
-        </div>
+        {/* </div> */}
       </div>
 
-      <div class="col-3 right">
+      <div class="col-md-3 col-11 right">
         {/* <h4><b>About Me</b></h4> */}
         {/* <div class="avator"></div> */}
         <p>林煜凱 Albert Lin</p>
@@ -96,9 +97,9 @@ function Home_rev2(){
         </Timeline>
       </div>
     </div>
-    <div class="footer">
-     
-      
+    <div class="footer text-center">
+    
+      <Hit_counter />
     </div>
         </>
     )

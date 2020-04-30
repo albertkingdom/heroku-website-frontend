@@ -65,6 +65,6 @@ router.put('/completetodo',(req,res)=>{
 })
 router.get('/',(req,res)=>{
     console.log('123test')
-    res.send('hello')
+    res.send('hello123')
 })
 module.exports = router;

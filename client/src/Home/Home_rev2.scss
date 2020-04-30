@@ -7,6 +7,7 @@ ul {
     linear-gradient(to right, red 80%, white);
   color: white;
   padding: 100px 0;
+  // min-width: 500px;
 }
 .horizontalline {
   width: 60px;
@@ -129,6 +130,7 @@ ul {
 .footer {
   background: linear-gradient(to bottom, white 5%, gray 90%);
   height: 300px;
+  padding: 50px;
 }
 .website-intro {
   width: 100%;
@@ -166,14 +168,15 @@ ul {
 h2.title {
   position: relative;
 }
-h2.title::after {
-  content: "";
-  width: 50px;
-  height: 5px;
-  background: brown;
-  position: absolute;
-  bottom: -5px;
-  // left: 0;
-  // margin: 5px auto;
-  left: 48%;
-}
+// h2.title::after {
+//   content: "";
+//   width: 50px;
+//   height: 5px;
+//   background: brown;
+//   position: absolute;
+//   bottom: 0px;
+//   // left: 0;
+//   margin: 5px auto;
+//   // left: calc(50%-25px);
+//   text-align: center;
+// }
