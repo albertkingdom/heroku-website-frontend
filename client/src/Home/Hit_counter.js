@@ -19,9 +19,9 @@ function Hit_counter(){
     return (
         <>
             <h6>瀏覽次數</h6>
-            <span>{parseInt(hitcount/100)}</span>
-            <span>{parseInt(hitcount/10)}</span>
-            <span>{hitcount%10}</span>
+            <span className="hitcounter">{parseInt(hitcount/100)}</span>
+            <span className="hitcounter">{parseInt(hitcount%100/10)}</span>
+            <span className="hitcounter">{hitcount%10}</span>
         </>
     )
 }

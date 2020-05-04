@@ -4,6 +4,7 @@ ul.squares {
   padding: 100px 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   li {
     width: 120px;
     /* flex-basis: 200px; */
@@ -27,10 +28,10 @@ ul.squares {
     z-index: -1;
   }
   li:nth-child(n + 4) {
-    left: 83px;
+    left: 85px;
   }
   li:nth-child(n + 6) {
-    left: -172px;
+    left: -169px;
     bottom: -100px;
   }
   .box1::after {

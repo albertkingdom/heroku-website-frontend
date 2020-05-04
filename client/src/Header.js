@@ -52,7 +52,7 @@ const Header = () =>{
             <ul>
                 <li><a className="nav-link" href="/" >Home</a></li>
                 <li><a className="nav-link" href="/todo">Todo</a></li>
-                <li><a className="nav-link" href="/ptt">Ptt八卦版</a></li>
+                <li><a className="nav-link" href="/ptt">PTT八卦版</a></li>
                 <li><a className="nav-link" href="/project">資策會專題作品</a></li>
             </ul>
         </div>
@@ -60,7 +60,7 @@ const Header = () =>{
             <ul className="d-flex justify-content-center">
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/" exact>Home</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/todo">Todo</NavLink></li>
-                <li><NavLink className="nav-link" activeClassName="activelink" to="/ptt">Ptt八卦版</NavLink></li>
+                <li><NavLink className="nav-link" activeClassName="activelink" to="/ptt">PTT八卦版</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/project">資策會專題作品</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/timeline">切版練習</NavLink></li>
             </ul>
