@@ -73,9 +73,9 @@ function Home_rev2(){
         <div class="d-flex justify-content-center sideProject">
           <div class="intro col-md-2 col-10">
                 <img className="" src="./coronavirus.svg"></img>
-                <h4><a href="/">新冠肺炎資訊看版</a></h4>
+                <h4><a href="https://codesandbox.io/s/covid19-info-0pitj" target="_blank">新冠肺炎資訊看版</a></h4>
                 <p>串接api，將新冠肺炎資訊圖表化</p>
-                <a href="/">看更多</a>
+                <a href="https://codesandbox.io/s/covid19-info-0pitj" target="_blank">看更多</a>
             </div>
         </div>
     {/* <div class=" d-flex justify-content-center flex-wrap"> */}
