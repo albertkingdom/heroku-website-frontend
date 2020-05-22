@@ -81,11 +81,42 @@ header {
   margin: 10px auto;
   background-color: white;
   border-radius: 25px;
+  box-shadow: 5px 5px 5px rgb(83, 82, 82);
 
   ul {
     padding: 0px;
     margin: auto;
     list-style-type: none;
+
+    li {
+      position: relative;
+      &:hover {
+        background-color: rgb(172, 198, 255);
+        ul {
+          display: block;
+        }
+      }
+      &:hover > li {
+        background-color: rgb(172, 198, 255);
+      }
+      //子選單
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 130px;
+        background-color: #fff;
+        box-shadow: 5px 5px 5px rgb(83, 82, 82);
+        font-size: 18px;
+        li {
+          height: 40px;
+          padding: 5px;
+          // &:hover {
+          //   background-color: rgb(117, 151, 224);
+          // }
+        }
+      }
+    }
     li a {
       display: block;
       height: 50px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.scss'
-import { withRouter,NavLink } from 'react-router-dom'
+import { withRouter,NavLink,Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import $ from 'jquery'
 
@@ -62,7 +62,13 @@ const Header = () =>{
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/todo">Todo</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/ptt">PTT八卦版</NavLink></li>
                 <li><NavLink className="nav-link" activeClassName="activelink" to="/project">資策會專題作品</NavLink></li>
-                <li><NavLink className="nav-link" activeClassName="activelink" to="/timeline">切版練習</NavLink></li>
+                <li>
+                    <NavLink className="nav-link" activeClassName="activelink" to="/timeline">切版練習</NavLink>
+                    <ul>
+                        <li><Link to="/timeline">時間軸</Link></li>
+                        <li><Link to="">Other</Link></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
