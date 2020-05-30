@@ -15,19 +15,19 @@ function getgossip(url){
 //抓熱門前3名文章內容
 router.post('/top3',(req,res)=>{
     
-    console.log('body url length',req.body.url.length)
-    const promises=[]
-    for(let i=0; i<req.body.url.length;i++){
-        let promise = axios.get(req.body.url[i],{
-            headers:{
-                Cookie:"over18=1"
-            }
-        })
-        promises.push(promise)
-    }
+    // console.log('body url length',req.body.url.length)
+    // const promises=[]
+    // for(let i=0; i<req.body.url.length;i++){
+    //     let promise = axios.get(req.body.url[i],{
+    //         headers:{
+    //             Cookie:"over18=1"
+    //         }
+    //     })
+    //     promises.push(promise)
+    // }
     
-    
-    axios.all(promises)
+    // console.log('url array',req.body.url)
+    axios.all(req.body.url.map(item=>axios.get(item)))
     .then(axios.spread((...response)=>{
         console.log(response.length)
         const top3article=[]

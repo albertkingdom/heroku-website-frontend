@@ -54,6 +54,13 @@ const Header = () =>{
                 <li><a className="nav-link" href="/todo">Todo</a></li>
                 <li><a className="nav-link" href="/ptt">PTT八卦版</a></li>
                 <li><a className="nav-link" href="/project">資策會專題作品</a></li>
+                <li>
+                    <a className="nav-link" href="#">切版練習</a>
+                    <ul>
+                        <li><Link to="/timeline">時間軸</Link></li>
+                    </ul>
+                </li>
+                
             </ul>
         </div>
         <div className="header-nav-items">

@@ -94,7 +94,7 @@ const Ptt = (props) =>{
     })
     console.log('topContentData',topContentData)
     //fetch 熱門文章的內容
-    async function fetchtopcontent(urls){
+    function fetchtopcontent(urls){
         const url=[]
         // const noundefinedurl = urls.filter(url=>!url.link.match(/undefined/gm))//去掉被刪除文章，網址undefined
         // console.log('noundefinedurl',noundefinedurl)
