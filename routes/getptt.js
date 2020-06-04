@@ -26,12 +26,19 @@ router.post('/top3',(req,res)=>{
     //     promises.push(promise)
     // }
     
-    // console.log('url array',req.body.url)
-    axios.all(req.body.url.map(item=>axios.get(item)))
+    console.log('url array',req.body.url)
+    Promise.all(req.body.url.map(item=>axios.get(item,
+        {
+            headers:{
+                Cookie:"over18=1"
+            }
+        })))
+    // axios.all(promises)
     .then(axios.spread((...response)=>{
         console.log(response.length)
         const top3article=[]
         for(let i=0;i<response.length;i++){
+            // console.log(response[i].data)
             let $=cheerio.load(response[i].data)
             // console.log($('#main-content').text())
             
@@ -40,6 +47,7 @@ router.post('/top3',(req,res)=>{
             images=[...new Set(images)]
             console.log(images)
             top3article.push({text:$('#main-content').text(),img:images,title:$('.article-meta-value').eq(2).text(),url:$('.f2 a').attr('href')})
+            // console.log(top3article)
         }
         // console.log('top3 length',top3article.length)
         return top3article
