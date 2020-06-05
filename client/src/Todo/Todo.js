@@ -9,8 +9,11 @@ import { Card,Button} from 'react-bootstrap'
 import './Todo.scss'
 //react-icon
 import { AiOutlineDelete,AiOutlineCheck,AiOutlineEdit,AiOutlinePushpin } from "react-icons/ai"
-import { Modal } from 'antd';
+import { Modal,Collapse } from 'antd';
 import $ from 'jquery'
+
+const { Panel } = Collapse;
+
 
 function Todo(props){
 
@@ -116,7 +119,7 @@ const localCompletetoServer = (id) =>{
     .then(response=>response.json())
     .then(data=>{console.log(data)})
     .then(props.onCompleteTodo(id))
-}
+    }
     //新增to do的modal
     const showModal = () => {
     setVisible(true);
@@ -145,6 +148,7 @@ const localCompletetoServer = (id) =>{
     return (
     <>
     <div className="container">
+    
     <h1 className="text-center">ToDo List</h1>
     <button className="btn-add" onClick={showModal}>+</button>
     <Modal
@@ -162,128 +166,73 @@ const localCompletetoServer = (id) =>{
 
             </textarea>
     </Modal>
-    {/* <input type="text" value={newtodo} onChange={e=>setNewtodo(e.target.value)}></input>
-    <button onClick={()=>{
-        // props.onAddTodo(newtodo);
-        setNewtodo('');
-        localsavetosrv({content:newtodo,title:'123'});
-        // props.getdata()
-        }}>
-            add to list
-    </button> */}
-
-    {/* 新增一筆to do */}
-    {/* <Card style={{ width: '18rem' }} className="m-2 todocard position-relative col-5">
-        
-                
-        <Card.Body>
-            
-            <button onClick={()=>{
-                
-                setNewtodo('');
-                localsavetosrv({content:newtodo,title:'123'});
-                // props.getdata()
-                }}
-                className="float-right btn btn-primary">
-                   新增待辦
-            </button>
-            <>
-            <Card.Text>
-            <textarea rows="8" cols="30" 
-            value={newtodo} 
-            onChange={e=>setNewtodo(e.target.value)}
-            placeholder="請輸入待辦事項..."
-            style={{background:'transparent',border:'none'}}>
-
-            </textarea>
-            
-            </Card.Text>
-            
-            </>
-            
-            
-        </Card.Body>
-    </Card> */}
+    
     <hr/>
-    {/* <ul>
-        {props.currentTodo.map((todo,index)=>
-        <>
-        
-        <li key={index}>{todo.content}</li>
-        <button className="btn btn-primary mx-2" onClick={()=>props.onDelTodo(index)}>del from list</button>
-        <button className="btn btn-primary" onClick={()=>props.onCompleteTodo(`${todo}`)}>complete</button>
-        
-        </>
-        )}
-        
-    </ul> */}
-    <div className="d-flex flex-wrap justify-content-around">
-    {props.currentTodo.map((todo,index)=>
-    todo.completed == 0 ?
-    <Card key={todo.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-12 col-md-5">
-        <span className="card-del-btn" onClick={()=>{localdelDatafromserver(todo.id);}} >
-        <AiOutlineDelete style={{fontSize:'24px'}}/>
-        <span>刪除</span>
-        </span>
-        <span className="card-check-btn" 
-        onClick={()=>{
-            // props.onCompleteTodo(todo.id)
-            localCompletetoServer(todo.id)
-        }
-        }>
-        <AiOutlineCheck style={{fontSize:'24px'}}/>
-        <span>完成</span>
-        </span>
-        <AiOutlinePushpin style={{fontSize:'24px'}}/>
-        {/* 顏色選擇 */}
-        <div className="d-flex">
-            <div className="color-select rounded-circle" style={{background:"skyblue"}} onClick={handleChangeBkgColor}></div>
-            <div className="color-select rounded-circle" style={{background:"orange"}} onClick={handleChangeBkgColor}></div>
-            <div className="color-select rounded-circle" style={{background:"yellow"}} onClick={handleChangeBkgColor}></div>
-        </div>
-        <Card.Body>
-           
-            <Card.Title></Card.Title>
-            {!todo.edit?
-            <>
-            <Card.Text>
-            {todo.content} 
-            <span className="card-edit-btn" onClick={()=>{props.onEditTodo(todo.id);setEditTodo(todo.content)}}>
-            <AiOutlineEdit/>
-            </span>
-            </Card.Text>
-           
-            </>:
-            <textarea type="text" 
-            className="col-10" 
-            value={editTodo} 
-            onChange={(e)=>setEditTodo(e.target.value)} 
-            onBlur={()=>{
-                
-                localupdatetoserver(todo.id)
-                // props.onCompleteEdit(todo.id,editTodo)
-            }
-            }
-            />
-            }
-        </Card.Body>
-    </Card>
-    :null
-    )}
-    </div>
-    <hr/>
-    <h1 className="text-center">已完成</h1>
-    <div className="d-flex flex-wrap justify-content-around">
+    <Collapse bordered={false} defaultActiveKey={['1']}>
+      <Panel header="未完成" key="1">
+      <div className="d-flex flex-wrap justify-content-around">
+      {props.currentTodo.map((todo,index)=>
+      todo.completed == 0 ?
+      <Card key={todo.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-12 col-md-5">
+          <span className="card-del-btn" onClick={()=>{localdelDatafromserver(todo.id);}} >
+          <AiOutlineDelete style={{fontSize:'24px'}}/>
+          <span>刪除</span>
+          </span>
+          <span className="card-check-btn" 
+          onClick={()=>{
+              // props.onCompleteTodo(todo.id)
+              localCompletetoServer(todo.id)
+          }
+          }>
+          <AiOutlineCheck style={{fontSize:'24px'}}/>
+          <span>完成</span>
+          </span>
+          <AiOutlinePushpin style={{fontSize:'24px'}}/>
+          {/* 顏色選擇 */}
+          <div className="d-flex">
+              <div className="color-select rounded-circle" style={{background:"skyblue"}} onClick={handleChangeBkgColor}></div>
+              <div className="color-select rounded-circle" style={{background:"orange"}} onClick={handleChangeBkgColor}></div>
+              <div className="color-select rounded-circle" style={{background:"yellow"}} onClick={handleChangeBkgColor}></div>
+          </div>
+          <Card.Body>
+            
+              <Card.Title></Card.Title>
+              {!todo.edit?
+              <>
+              <Card.Text>
+              {todo.content} 
+              <span className="card-edit-btn" onClick={()=>{props.onEditTodo(todo.id);setEditTodo(todo.content)}}>
+              <AiOutlineEdit/>
+              </span>
+              </Card.Text>
+            
+              </>:
+              <textarea type="text" 
+              className="col-10" 
+              value={editTodo} 
+              onChange={(e)=>setEditTodo(e.target.value)} 
+              onBlur={()=>{
+                  
+                  localupdatetoserver(todo.id)
+                  // props.onCompleteEdit(todo.id,editTodo)
+              }
+              }
+              />
+              }
+          </Card.Body>
+      </Card>
+      :null
+      )}
+      </div>
+      </Panel>
+      <Panel header="已完成" key="2">
+      <div className="d-flex flex-wrap justify-content-around">
         {props.completelist.map((item) => {
             return (
                 
             <Card key={item.id} style={{ width: '18rem' }} className="m-2 todocard position-relative col-12 col-md-5">
-            <span className="card-del-btn" >
-            <AiOutlineDelete style={{fontSize:'24px'}}/>
-            </span>
-            <span className="card-check-btn">
-            <AiOutlineCheck style={{fontSize:'24px'}}/>
-            </span>
+            
+            
             
             <Card.Body>
                 <Card.Title></Card.Title>
@@ -296,7 +245,11 @@ const localCompletetoServer = (id) =>{
             </Card.Body>
         </Card>
         )})}
-    </div>
+      </div>
+      </Panel>
+      
+    </Collapse>
+    
     
     </div>
     </>)
