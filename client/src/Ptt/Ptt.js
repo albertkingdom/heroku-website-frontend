@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Card,Select,Carousel, Spin } from 'antd';
+import { Card,Select,Carousel, Spin,Tabs } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom'
 import { AiOutlineDown,AiOutlineUp } from 'react-icons/ai';
 import $ from 'jquery'
 import './ptt.scss'
 import Clock from '../component/Clock'
+import TabStructure from './TabStructure'
 const Ptt = (props) =>{
     const [pttTitle,setPttTitle] = useState([])
     const [count,setCount] = useState(0)
@@ -141,14 +142,31 @@ const Ptt = (props) =>{
       
     ))
     const top4article = topContentData.slice(0,4).map((item,index)=>(
-        <div className="d-flex pl-3" key={index}>
-        <span>{item.count}</span>
-        <div><a href={item.link} target="_blank">{item.titleText}</a></div>
+        <div className="d-flex px-3" key={index}>
+            <span>{item.count}</span>
+            <div className="flex-grow-1"><a href={item.link} target="_blank">{item.titleText}</a></div>
         </div>
     ))
     // console.log('排序',topContentData)
     //ant ui select
     const { Option } = Select;
+    const { TabPane } = Tabs;
+    function callback(key) {
+        console.log(key);
+      }
+    const Demo = () => (
+        <Tabs defaultActiveKey="1" onChange={callback}>
+          <TabPane tab="Tab 1" key="1">
+            Content of Tab Pane 1
+          </TabPane>
+          <TabPane tab="Tab 2" key="2">
+            Content of Tab Pane 2
+          </TabPane>
+          <TabPane tab="Tab 3" key="3">
+            Content of Tab Pane 3
+          </TabPane>
+        </Tabs>
+      );
     function handleChange(value) {
         // console.log(`selected ${value}`);
         setCount(value)
@@ -228,20 +246,39 @@ const Ptt = (props) =>{
         </div>
     ) 
     // loading 圖片end
-        
-   
-    return (
-    <>
-    <div className="container">
-        
-        {/* 熱門文章開始 */}
-        <Carousel autoplay style={{display:'none'}}>
-        {topContentDisplay}
-        </Carousel>
-        {/* 熱門文章end */}
+    
+    const mostpushcontent = (
+        <div className="row justify-content-center">
+           <div className="col-10  top4 ">
+            {top4article}
+           </div> 
+        </div>
+    
+    )
 
-        {/* <h5>更新時間:{new Date().toLocaleTimeString()}</h5>
-        <Clock/> */}
+    const browseWithPicsContent = (
+        <>
+        
+        <div className="row justify-content-center">
+            <div className="col-10 imgbrowse">
+                    
+            {isloadingImg?loading:
+            <div className="articleImgs">
+                {top3articlecontent.map((item,index)=>{
+                return (
+                    <Child1 key={index} imgs={item.img} link={item.url}/>
+                )
+
+            })}
+            </div>
+            }
+            </div>
+        </div>
+        </>
+        
+    )
+    const allArticle =(
+        <>
         <div className="d-flex justify-content-around flex-wrap my-3">
             <p className="col-11 col-md-3 my-2" style={{fontSize:'20px',margin:'0'}}>目前顯示{pttTitle.length}篇文章</p>
             <Select 
@@ -263,52 +300,25 @@ const Ptt = (props) =>{
                 <Option value="0">預設</Option>
             </Select>
         </div>
-        {/* 最多推4則 */}
-
-        <div className='d-flex flex-wrap justify-content-around'>
-            <div className="col-12 top4 col-md-3">
-                <p>最多推
-                    <button id="up1"  onClick={(e)=>handleHide1(e.target)}>
-                       <AiOutlineUp/> 
-                    </button>
-                    <button id="down1" style={{display:'none'}}onClick={(e)=>handleShow1(e.target)}>
-                        <AiOutlineDown />
-                    </button>
-                </p>
-                
-                {top4article}
-            </div>
-            {/* 圖文瀏覽 */}
-            
-            <div className="col-12 col-md-8 imgbrowse">
-                
-                <p>圖文瀏覽
-                    <button id="up2"  onClick={(e)=>handleHide2(e.target)}>
-                       <AiOutlineUp/> 
-                    </button>
-                    <button id="down2" style={{display:'none'}}onClick={(e)=>handleShow2(e.target)}>
-                        <AiOutlineDown />
-                    </button>
-                </p>
-                {isloadingImg?loading:
-                <div className="articleImgs">
-                    {top3articlecontent.map((item,index)=>{
-                    return (
-                        <Child1 key={index} imgs={item.img} link={item.url}/>
-                    )
-
-                })}
-                </div>
-                }
-            </div>
-        </div>
-        <div className="d-flex flex-wrap justify-content-around allarticle">
+        <div className="row justify-content-center">
+        <div className="d-flex flex-wrap justify-content-around allarticle col-11">
         {gossipContent()}
         </div>
+        </div>
+        </>
+    )
+   
+    return (
+    
+    <div className="container">
+        <TabStructure 
+        mostpush={mostpushcontent} 
+        browseWithPics={browseWithPicsContent}
+        allArticle={allArticle}/>
+        
+        
     </div>
 
-    
-    </>
     )
 
 }
