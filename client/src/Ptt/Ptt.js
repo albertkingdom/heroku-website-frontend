@@ -212,20 +212,21 @@ const Ptt = (props) =>{
         $('#up2').css('display','none')
         $('.articleImgs').css({'max-height':'0px','overflow':'hidden'})
     }
-    const Child1 = ({imgs,link})=>{
+    const Child1 = ({imgs,link,title})=>{
         return (
             <div >
                 {imgs.map(url=>{
                     return(
-                    <div key={url}
+                    <div className="imgwrapper" key={url}
                     //  onMouseEnter={(e)=>handleImgHoverIn(e.target)} 
                     // onMouseLeave={(e)=>handleImgHoverOut(e.target)}
                     >
-                    <img  src={'https://'+url+'.jpg'} 
-                    ></img>
+                    <img  src={'https://'+url+'.jpg'}/>
+                    <a href={'https://'+url+'.jpg'} target="_blank"></a>
                     <div className="btnforimg">
-                        <button><a href={link} target="_blank">看文章</a></button>
-                        <button><a href={'https://'+url+'.jpg'} target="_blank">看圖片</a></button>
+                        <a href={link} target="_blank">{title}</a>
+                        {/* <button><a href={link} target="_blank">看文章</a></button> */}
+                        {/* <button><a href={'https://'+url+'.jpg'} target="_blank">看圖片</a></button> */}
                     </div>
                     </div>
                     )
@@ -266,7 +267,7 @@ const Ptt = (props) =>{
             <div className="articleImgs">
                 {top3articlecontent.map((item,index)=>{
                 return (
-                    <Child1 key={index} imgs={item.img} link={item.url}/>
+                    <Child1 key={index} imgs={item.img} link={item.url} title={item.title}/>
                 )
 
             })}
@@ -286,8 +287,8 @@ const Ptt = (props) =>{
             defaultValue="推文數篩選" 
             style={{ width: 200 }} 
             onChange={handleChange}>
-                <Option value="10">>10</Option>
-                <Option value="20">>20</Option>
+                <Option value="10">&gt;10</Option>
+                <Option value="20">&gt;20</Option>
                 <Option value="0">0</Option>
             </Select>
             <Select
