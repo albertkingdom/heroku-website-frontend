@@ -1,15 +1,17 @@
 import React from 'react'
 
-const IntroBlock = ()=>{
+const IntroBlock = ({title,intro,imgurl,linkurl})=>{
     return (
     <>
-    <div class="intro col-md-2 col-5">
-        <img src="./blah.jpg"></img>
-        <h4><a href="/ptt">PTT八卦版</a></h4>
+    <div class="intro col-md-2 col-10">
+        <div className="img-wrapper">
+            <img src={imgurl} alt={title}></img>
+        </div>
+        <h4><a href={linkurl}>{title}</a></h4>
         <p>
-                即時爬取PTT八卦版文章和圖片，包含推文排序功能、以圖瀏覽文章功能，運用React.js結合Node.js
+            {intro}
         </p>
-        <a href="/ptt">看更多</a>
+        <a href={linkurl}>看更多</a>
     </div>
     </>
     )

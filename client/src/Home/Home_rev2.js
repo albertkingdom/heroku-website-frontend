@@ -44,26 +44,9 @@ function Home_rev2(){
         {/* <div class="horizontalline"></div> */}
         
         <div class="d-flex justify-content-center flex-wrap website-intro">
+          <IntroBlock title={"PTT八卦版圖文瀏覽"} intro={"即時爬取PTT八卦版文章和圖片，包含推文排序功能、以圖瀏覽文章功能，運用React.js結合Node.js"} imgurl={"./blah.jpg"} linkurl={"/ptt"} />
+          <IntroBlock title={"資策會專題作品"} intro={"資策會專題作品的主要頁面截圖，為一個販售遊戲的電商平台的商品頁面，運用React框架渲染畫面，結合後端Node.js存取database資料"} imgurl={"./presentation.jpg"} linkurl={"/project"} />
             
-            <div class="intro col-md-2 col-10">
-                <div className="img-wrapper">
-                  <img src="./blah.jpg"></img>
-                </div>
-                
-                <h4><a href="/ptt">PTT八卦版</a></h4>
-                <p>
-                即時爬取PTT八卦版文章和圖片，包含推文排序功能、以圖瀏覽文章功能，運用React.js結合Node.js
-                </p>
-                <a href="/ptt">看更多</a>
-            </div>
-            <div class="intro col-md-2 col-10">
-              <div className="img-wrapper">
-                <img src="./presentation.jpg"></img>
-              </div>
-                <h4><a href="/project">資策會專題作品</a></h4>
-                <p>資策會專題作品的主要頁面截圖，為一個販售遊戲的電商平台的商品頁面，運用React.js結合Node.js存取database資料</p>
-                <a href="/project">看更多</a>
-            </div>
         </div>
         <div id="notify">
             {/* <Notification/> */}
@@ -71,12 +54,9 @@ function Home_rev2(){
         </div>
         <h2 class="text-center title">其他專案</h2>
         <div class="d-flex justify-content-center sideProject">
-          <div class="intro col-md-2 col-10">
-                <img className="" src="./coronavirus.svg"></img>
-                <h4><a href="https://codesandbox.io/s/covid19-info-0pitj" target="_blank">新冠肺炎資訊看版</a></h4>
-                <p>串接api，將新冠肺炎資訊圖表化</p>
-                <a href="https://codesandbox.io/s/covid19-info-0pitj" target="_blank">看更多</a>
-            </div>
+          
+          <IntroBlock title={"新冠肺炎資訊看版"} intro={"串接api，將新冠肺炎資訊圖表化"} imgurl={"./coronavirus.svg"} linkurl={"https://codesandbox.io/s/covid19-info-0pitj"} />
+          <IntroBlock title={"股市損益紀錄表(Vue框架)"} intro={"模仿股票下單app，替使用者紀錄下單資訊，每日計算個股報酬率"} imgurl={"/stock-market.jpg"} linkurl={"https://codepen.io/albertkingdom/pen/oNbMNOd"}/>
         </div>
     {/* <div class=" d-flex justify-content-center flex-wrap"> */}
       <div class="col-md-12 col-12 technique">
@@ -117,8 +97,8 @@ function Home_rev2(){
             <p style={{'fontSize':'16px'}}>albertkingdom@gmail.com</p>
             <div className="d-flex justify-content-center" id="links">
                 <a href="https://github.com/albertkingdom"><AiFillGithub/></a>
-                <a href=""><AiFillLinkedin/></a>
-                <a href=""><FiCodesandbox /></a>
+                <a href="https://www.linkedin.com/in/yu-kai-lin-4a75996a/"><AiFillLinkedin/></a>
+                
             </div>
           </div>
           <div className="timeline col-md-4 col-12">
