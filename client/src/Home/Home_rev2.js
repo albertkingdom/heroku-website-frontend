@@ -55,7 +55,7 @@ function Home_rev2(){
         <h2 class="text-center title">其他專案</h2>
         <div class="d-flex justify-content-center sideProject">
           
-          <IntroBlock title={"新冠肺炎資訊看版"} intro={"串接api，將新冠肺炎資訊圖表化"} imgurl={"./coronavirus.svg"} linkurl={"https://codesandbox.io/s/covid19-info-0pitj"} />
+          <IntroBlock title={"新冠肺炎資訊看版"} intro={"串接api，將新冠肺炎資訊圖表化"} imgurl={"./coronavirus.svg"} linkurl={"https://albertkingdom.github.io/covid19info/"} />
           <IntroBlock title={"股市損益紀錄表(Vue框架)"} intro={"模仿股票下單app，替使用者紀錄下單資訊，每日計算個股報酬率"} imgurl={"/stock-market.jpg"} linkurl={"https://codepen.io/albertkingdom/pen/oNbMNOd"}/>
         </div>
     {/* <div class=" d-flex justify-content-center flex-wrap"> */}
