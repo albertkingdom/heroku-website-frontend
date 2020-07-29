@@ -16,7 +16,7 @@ const Ptt = (props) =>{
     const [isloadingImg,setIsloadingImg] = useState(true)
     console.log('props',props)
     useEffect(()=>{
-        fetch('/getptt',{
+        fetch('https://ptt-todolist-api.herokuapp.com/getptt',{
             method:'GET'
         })
         .then(res=>res.json())
@@ -103,7 +103,7 @@ const Ptt = (props) =>{
     //    console.log(url)
         let body={url:url}
         // console.log('body',body)
-        fetch('/getptt/top3',
+        fetch('https://ptt-todolist-api.herokuapp.com/getptt/top3',
         {
         method: 'post',
         body:JSON.stringify(body),

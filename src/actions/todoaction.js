@@ -45,7 +45,7 @@ export const savetoserver = (todo) => {
 //從database抓回資料
 export const getDatafromserverAsync = () => {
     return dispatch => {
-        fetch('/todolist/gettodo',{
+        fetch('https://ptt-todolist-api.herokuapp.com/todolist/gettodo',{
             method:'GET',
             headers: new Headers({
                 Accept: 'application/json',
@@ -67,7 +67,7 @@ export const delDatafromserverAsync = (obj) =>{
     return dispatch => {
         let body = JSON.parse(obj)
         console.log('del_body',JSON.stringify(body))
-        fetch('/todolist/deltodo',{
+        fetch('https://ptt-todolist-api.herokuapp.com/todolist/deltodo',{
             method:'POST',
             body:JSON.stringify(body),
             headers: new Headers({

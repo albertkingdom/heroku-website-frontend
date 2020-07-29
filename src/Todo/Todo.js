@@ -28,7 +28,7 @@ function Todo(props){
     async function localsavetosrv(todo){
         const request = new Request(
             
-            '/todolist/savetodb',
+            'https://ptt-todolist-api.herokuapp.com/todolist/savetodb',
             {
               method: 'post',
               body:JSON.stringify(todo),
@@ -62,7 +62,7 @@ async function localdelDatafromserver(id){
         
         const request = new Request(
             
-            '/todolist/deltodo',
+            'https://ptt-todolist-api.herokuapp.com/todolist/deltodo',
             {
               method: 'post',
               body:JSON.stringify(body),
@@ -89,7 +89,7 @@ const localupdatetoserver = (id) =>{
         content:editTodo
     }
     
-    fetch('/todolist/updatetodo',
+    fetch('https://ptt-todolist-api.herokuapp.com/todolist/updatetodo',
     {
       method: 'post',
       body:JSON.stringify(body),
@@ -108,7 +108,7 @@ const localCompletetoServer = (id) =>{
     let body={completeid:id,
         }
     
-    fetch('/todolist/completetodo',
+    fetch('https://ptt-todolist-api.herokuapp.com/todolist/completetodo',
     {
       method: 'put',
       body:JSON.stringify(body),
