@@ -7,7 +7,7 @@ function Hit_counter(){
     const [hitcount,setHitcount] = useState(null)
     
     useEffect(()=>{
-        fetch('/hitcount',{
+        fetch('https://ptt-todolist-api.herokuapp.com/hitcount',{
             method:'GET'
         })
         .then(res=>res.json())
