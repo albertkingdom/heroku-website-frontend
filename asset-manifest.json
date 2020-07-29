@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/heroku-website-frontend/static/css/main.3d4ca2b3.chunk.css",
+    "main.js": "/heroku-website-frontend/static/js/main.7c294c3c.chunk.js",
+    "main.js.map": "/heroku-website-frontend/static/js/main.7c294c3c.chunk.js.map",
+    "runtime-main.js": "/heroku-website-frontend/static/js/runtime-main.12390857.js",
+    "runtime-main.js.map": "/heroku-website-frontend/static/js/runtime-main.12390857.js.map",
+    "static/css/2.c8fdb744.chunk.css": "/heroku-website-frontend/static/css/2.c8fdb744.chunk.css",
+    "static/js/2.83bd8c05.chunk.js": "/heroku-website-frontend/static/js/2.83bd8c05.chunk.js",
+    "static/js/2.83bd8c05.chunk.js.map": "/heroku-website-frontend/static/js/2.83bd8c05.chunk.js.map",
+    "index.html": "/heroku-website-frontend/index.html",
+    "precache-manifest.64421a4311ca86361bad684c2998cead.js": "/heroku-website-frontend/precache-manifest.64421a4311ca86361bad684c2998cead.js",
+    "service-worker.js": "/heroku-website-frontend/service-worker.js",
+    "static/css/2.c8fdb744.chunk.css.map": "/heroku-website-frontend/static/css/2.c8fdb744.chunk.css.map",
+    "static/css/main.3d4ca2b3.chunk.css.map": "/heroku-website-frontend/static/css/main.3d4ca2b3.chunk.css.map",
+    "static/js/2.83bd8c05.chunk.js.LICENSE.txt": "/heroku-website-frontend/static/js/2.83bd8c05.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/heroku-website-frontend/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12390857.js",
+    "static/css/2.c8fdb744.chunk.css",
+    "static/js/2.83bd8c05.chunk.js",
+    "static/css/main.3d4ca2b3.chunk.css",
+    "static/js/main.7c294c3c.chunk.js"
+  ]
+}
