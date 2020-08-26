@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const IntroBlock = ({title,intro,imgurl,linkurl})=>{
-    return (
+const IntroBlock = ({ title, intro, imgurl, linkurl }) => {
+  return (
     <>
-    <div class="intro col-md-2 col-10">
+      <div className="intro col-md-2 col-10">
         <div className="img-wrapper">
-            <img src={imgurl} alt={title}></img>
+          <img src={imgurl} alt={title}></img>
         </div>
-        <h4><a href={linkurl}>{title}</a></h4>
-        <p>
-            {intro}
-        </p>
+        <h4>
+          <a href={linkurl}>{title}</a>
+        </h4>
+        <p>{intro}</p>
         <a href={linkurl}>看更多</a>
-    </div>
+      </div>
     </>
-    )
-}
-export default IntroBlock
+  );
+};
+export default IntroBlock;

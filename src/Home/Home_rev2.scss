@@ -6,7 +6,8 @@ ul {
   background: linear-gradient(to bottom, #e66465 50%, #9198e5 80%, white 100%),
     linear-gradient(to right, red 80%, white);
   color: white;
-  padding: 100px 0;
+  padding: 20px 0;
+  margin: -80px 0 80px;
   // min-width: 550px;
   .hello-text {
     margin-top: 80px;
@@ -215,18 +216,18 @@ ul {
 }
 h2.title {
   position: relative;
-  &::after {
-    content: "";
-    display: inline-block;
-    // border: 1px solid red;
-    background-color: lightsalmon;
-    position: relative;
-    top: 15px;
-    left: -100px;
-    width: 110px;
-    height: 30px;
-    z-index: -1;
-  }
+  // &::after {
+  //   content: "";
+  //   display: inline-block;
+  //   // border: 1px solid red;
+  //   background-color: lightsalmon;
+  //   position: relative;
+  //   top: 15px;
+  //   left: -100px;
+  //   width: 110px;
+  //   height: 30px;
+  //   z-index: -1;
+  // }
 }
 
 // h2.title::after {
