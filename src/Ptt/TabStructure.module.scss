@@ -1,0 +1,45 @@
+@keyframes flyin {
+  0% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.tab {
+  // display: none;
+  &.active {
+    display: block;
+    // animation:flyin 1s;
+  }
+}
+
+.tabControlBtn {
+  display: flex;
+
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+  li {
+    flex-wrap: wrap;
+    min-width: 10%;
+    height: 50px;
+    margin: 5px 0px;
+    padding: 5px 10px;
+    background-color: #fff;
+    // border-bottom:1px solid green;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    // transition: all 0.9s;
+  }
+  li:hover {
+    background-color: rgb(255, 238, 255);
+  }
+  li.active {
+    border-bottom: 2px solid purple;
+    // transition: all 0.9s;
+    // background-color: lightgray;
+  }
+}
