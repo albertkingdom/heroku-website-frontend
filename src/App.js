@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import Todo from "./Todo/Todo";
+import TodoList from "./Todo/TodoList";
 import Ptt from "./Ptt/Ptt";
 import Header from "./Header";
 import Page404 from "./component/Page404";
@@ -51,13 +51,10 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route exact path="/">
-                <Home_rev2 />
+                {/* <Home_rev2 /> */}
               </Route>
-              {/* <div style={{ paddingTop: "70px" }}> */}
 
-              <Route path="/project">
-                <Project />
-              </Route>
+              <Route path="/project">{/* <Project /> */}</Route>
               <Route path="/ptt">
                 <Ptt />
               </Route>
@@ -68,18 +65,16 @@ class App extends Component {
                 render={() =>
                   new Date(localStorage.getItem("expire")).getTime() >
                   new Date().getTime() ? (
-                    <Todo />
+                    <TodoList />
                   ) : (
                     <Redirect to="/login" />
                   )
                 }
               />
               <Route path="/practice_lifehacker">
-                <Practice_lifehacker />
+                {/* <Practice_lifehacker /> */}
               </Route>
-              <Route path="/timeline">
-                <Timeline />
-              </Route>
+              <Route path="/timeline">{/* <Timeline /> */}</Route>
               <Route
                 path="/login"
                 render={(props) => (

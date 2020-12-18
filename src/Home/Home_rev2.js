@@ -77,38 +77,16 @@ function Home_rev2() {
           linkurl={"https://albertkingdom.github.io/covid19info/"}
         />
         <IntroBlock
-          title={"股市損益紀錄表(Vue框架)"}
-          intro={"模仿股票下單app，替使用者紀錄下單資訊，每日計算個股報酬率"}
+          title={"My Taiwan Stock App"}
+          intro={"模仿股票app，替使用者紀錄下單資訊，每日計算個股報酬率"}
           imgurl={"/stock-market.jpg"}
-          linkurl={"https://codepen.io/albertkingdom/pen/oNbMNOd"}
+          linkurl={""}
         />
       </div>
-      {/* <div class=" d-flex justify-content-center flex-wrap"> */}
+
       <div class="col-md-12 col-12 technique">
-        {/* <div class="d-flex"> */}
-        {/* <div class="toprow first">前端技能</div> */}
-        {/* <div class="box col-6"> */}
-        {/* <ul>
-              <li>HTML</li>
-              <li>CSS/SCSS</li>
-              <li>JavaScript ES6</li>
-              <li>React.js</li>
-              
-            </ul> */}
         <h2 className="text-center">技能</h2>
         <Square />
-        {/* </div> */}
-        {/* </div> */}
-
-        {/* <div class="d-flex mt-3 toprow2"> */}
-        {/* <div class="toprow first">後端技能</div> */}
-        {/* <div class="box col-6"> */}
-        {/* <ul>
-              <li>Node.js</li>
-              <li>MySQL</li>
-            </ul> */}
-        {/* </div> */}
-        {/* </div> */}
       </div>
 
       <div class="aboutme text-center">

@@ -1,84 +1,168 @@
-export const ADD= 'ADD_TODOLIST'
-export const DEL= 'DEL_TODOLIST'
-export const COMPLETE= 'COMPLETE_TODOLIST'
-export const EDIT = 'EDIT_TODOLIST'
-export const COMPLETE_EDIT = 'COMPLETE_EDIT_TODOLIST'
-export const INITIALCOMPLETE = 'INITIAL_COMPLETE_TODOLIST'
+import Swal from "sweetalert2";
+
+export const ADD = "ADD_TODOLIST";
+export const DEL = "DEL_TODOLIST";
+export const COMPLETE = "COMPLETE_TODOLIST";
+export const EDIT = "EDIT_TODOLIST";
+export const COMPLETE_EDIT = "COMPLETE_EDIT_TODOLIST";
+export const INITIALCOMPLETE = "INITIAL_COMPLETE_TODOLIST";
 
 //action creator
-export const addtolist = (str,id,completed)=>{
-    return {type:ADD,payload:{listname:str,id:id,completed:completed}}
+export const addtolist = (str, id, completed = 0) => {
+  return {
+    type: ADD,
+    payload: { listname: str, id: id, completed: completed },
+  };
+};
+export const deltodolist = (id) => {
+  return { type: DEL, payload: { delItemIndex: id } };
+};
 
-}
-export const deltodolist = (id) =>{
-    return {type:DEL,payload:{delItemIndex:id}}
-}
-
-//action creator + redux thunk
-//block original dispatch and dispatch another one
-// export const addtolist_async = (str)=>{
-//     return dispatch => {
-//         setTimeout(() => {
-//             dispatch(addtolist(str))
-//         }, 2000);
-//     }
-// }
-
+export const editTolist = (id) => {
+  return { type: EDIT, payload: { editItemId: id } };
+};
+//儲存todo to server
 export const savetoserver = (todo) => {
-    return async dispatch => {
-        // 注意資料格式要設定，伺服器才知道是json格式
-        const request = new Request('/todolist/savetodb', {
-            method: 'POST',
-            body: JSON.stringify({content:'123',title:'123'}),
-            headers: new Headers({
-                Accept: 'application/json',
-                'Content-Type': 'appliaction/json',
-            }),
-        })
-        console.log(JSON.stringify(todo))
-        const response = await fetch(request)
-        const data = await response.json()
-        console.log(data)
-        dispatch(addtolist(todo.content))
+  return async (dispatch) => {
+    const request = new Request(
+      "https://ptt-todolist-api.herokuapp.com/todolist/savetodb",
+      {
+        method: "POST",
+        body: JSON.stringify({ content: todo, title: "123" }),
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }),
+      }
+    );
+
+    const response = await fetch(request);
+    const data = await response.json();
+
+    if (data.result.affectedRows === 1) {
+      const { insertId } = data.result;
+      dispatch(addtolist(todo, insertId));
     }
-}
+  };
+};
 //從database抓回資料
-export const getDatafromserverAsync = () => {
-    return dispatch => {
-        fetch('https://ptt-todolist-api.herokuapp.com/todolist/gettodo',{
-            method:'GET',
-            headers: new Headers({
-                Accept: 'application/json',
-                'Content-Type': 'appliaction/json',
-            }),
-        })
-        .then(response=>response.json())
-        // .then(data=>console.log(data))
-        .then(data=>data.forEach(
-            element=>element.completed == 0? 
-            dispatch(addtolist(element.content,element.Id,element.completed)):
-            dispatch({type:INITIALCOMPLETE,payload:{id:element.Id,content:element.content,completed:element.completed}}))
-            )
-        // dispatch(addtolist())
-    }
-}
+export const getDatafromserver = () => {
+  return async (dispatch, getState) => {
+    const response = await fetch(
+      "https://ptt-todolist-api.herokuapp.com/todolist/gettodo",
+      {
+        method: "GET",
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }),
+      }
+    );
+
+    const data = await response.json();
+    // console.log(getState());
+    const { todoList, completeTodo } = getState(); //取得目前store
+    data.forEach((element) => {
+      if (
+        element.completed === 0 &&
+        todoList.findIndex((todo) => todo.id === element.Id) < 0
+      ) {
+        dispatch(addtolist(element.content, element.Id, element.completed));
+      } else if (
+        element.completed !== 0 &&
+        completeTodo.findIndex((todo) => todo.id === element.Id) < 0
+      ) {
+        dispatch({
+          type: INITIALCOMPLETE,
+          payload: {
+            id: element.Id,
+            content: element.content,
+            completed: element.completed,
+          },
+        });
+      }
+    });
+  };
+};
 //刪除todo
-export const delDatafromserverAsync = (obj) =>{
-    return dispatch => {
-        let body = JSON.parse(obj)
-        console.log('del_body',JSON.stringify(body))
-        fetch('https://ptt-todolist-api.herokuapp.com/todolist/deltodo',{
-            method:'POST',
-            body:JSON.stringify(body),
-            headers: new Headers({
-                Accept: 'application/json',
-                'Content-Type': 'appliaction/json',
-            }),
-        })
-        .then(response=>response.json())
-        .then(data=>console.log(data))
-        
-        dispatch(deltodolist(obj.delid))
-        
-}
-}
+export const delDatafromserver = (id) => {
+  return async (dispatch) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (confirm.isConfirmed) {
+      let body = { delid: id };
+
+      const request = new Request(
+        "https://ptt-todolist-api.herokuapp.com/todolist/deltodo",
+        {
+          method: "post",
+          body: JSON.stringify(body),
+          headers: new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          }),
+        }
+      );
+      const response = await fetch(request);
+      const data = await response.json();
+      if (data.affectedRows === 1) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        dispatch(deltodolist(id));
+      }
+    }
+  };
+};
+//完成更新todo
+export const updatetoserver = (id, editTodo) => {
+  let body = { editid: id, content: editTodo };
+  return async (dispatch) => {
+    const response = await fetch(
+      "https://ptt-todolist-api.herokuapp.com/todolist/updatetodo",
+      {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      }
+    );
+
+    const data = await response.json();
+    if (data.affectedRows === 1) {
+      dispatch({
+        type: COMPLETE_EDIT,
+        payload: { editItemId: id, editcontent: editTodo },
+      });
+    }
+  };
+};
+
+//將todo設定為已完成
+export const completeTodo = (id) => {
+  return async (dispatch) => {
+    let body = { completeid: id };
+
+    const response = await fetch(
+      "https://ptt-todolist-api.herokuapp.com/todolist/completetodo",
+      {
+        method: "put",
+        body: JSON.stringify(body),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      }
+    );
+    const data = await response.json();
+    if (data.affectedRows === 1) {
+      dispatch({ type: COMPLETE, payload: { id: id } });
+    }
+  };
+};
