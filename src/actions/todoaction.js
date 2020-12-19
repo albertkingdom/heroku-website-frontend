@@ -8,10 +8,10 @@ export const COMPLETE_EDIT = "COMPLETE_EDIT_TODOLIST";
 export const INITIALCOMPLETE = "INITIAL_COMPLETE_TODOLIST";
 
 //action creator
-export const addtolist = (str, id, completed = 0) => {
+export const addtolist = (str, id, completed = 0, title) => {
   return {
     type: ADD,
-    payload: { listname: str, id: id, completed: completed },
+    payload: { listname: str, id: id, completed: completed, title: title },
   };
 };
 export const deltodolist = (id) => {
@@ -22,13 +22,13 @@ export const editTolist = (id) => {
   return { type: EDIT, payload: { editItemId: id } };
 };
 //儲存todo to server
-export const savetoserver = (todo) => {
+export const savetoserver = (todo, title) => {
   return async (dispatch) => {
     const request = new Request(
       "https://ptt-todolist-api.herokuapp.com/todolist/savetodb",
       {
         method: "POST",
-        body: JSON.stringify({ content: todo, title: "123" }),
+        body: JSON.stringify({ content: todo, title: title }),
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const savetoserver = (todo) => {
 
     if (data.result.affectedRows === 1) {
       const { insertId } = data.result;
-      dispatch(addtolist(todo, insertId));
+      dispatch(addtolist(todo, insertId, 0, title));
     }
   };
 };
@@ -67,7 +67,14 @@ export const getDatafromserver = () => {
         element.completed === 0 &&
         todoList.findIndex((todo) => todo.id === element.Id) < 0
       ) {
-        dispatch(addtolist(element.content, element.Id, element.completed));
+        dispatch(
+          addtolist(
+            element.content,
+            element.Id,
+            element.completed,
+            element.title
+          )
+        );
       } else if (
         element.completed !== 0 &&
         completeTodo.findIndex((todo) => todo.id === element.Id) < 0
@@ -78,6 +85,7 @@ export const getDatafromserver = () => {
             id: element.Id,
             content: element.content,
             completed: element.completed,
+            title: element.title,
           },
         });
       }

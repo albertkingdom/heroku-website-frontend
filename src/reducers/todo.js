@@ -16,6 +16,7 @@ const reducer = (state = initialState, action) => {
             content: action.payload.listname,
             edit: false,
             completed: action.payload.completed,
+            title: action.payload.title,
           },
         ],
       };
@@ -51,6 +52,7 @@ const reducer = (state = initialState, action) => {
           content: action.payload.content,
           edit: false,
           completed: action.payload.completed,
+          title: action.payload.title,
         },
       ];
       return {

@@ -50,35 +50,35 @@ const Header = (props) => {
         <div className="header-nav-items-rwd">
           <ul>
             <li>
-              <a className="nav-link" href="/">
+              <Link className="nav-link" href="/" disabled>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="nav-link" href="/todo">
+              <Link className="nav-link" href="/todo">
                 Todo
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="nav-link" href="/ptt">
+              <Link className="nav-link" href="/ptt">
                 PTT八卦版
-              </a>
+              </Link>
             </li>
-            <li>
-              <a className="nav-link" href="/project">
+            {/* <li>
+              <Link className="nav-link" href="/project">
                 資策會專題作品
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="nav-link" href="#">
+              <Link className="nav-link" href="#">
                 切版練習
-              </a>
+              </Link>
               <ul>
                 <li>
                   <Link to="/timeline">時間軸</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="header-nav-items">
@@ -111,7 +111,7 @@ const Header = (props) => {
                 PTT八卦版
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 className="nav-link"
                 activeClassName="activelink"
@@ -136,7 +136,7 @@ const Header = (props) => {
                   <Link to="">Other</Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
             {/* login button */}
             <span style={{ transform: "translateX(50px)", fontSize: "24px" }}>
               {props.auth ? (

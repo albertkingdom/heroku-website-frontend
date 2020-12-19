@@ -62,14 +62,15 @@ class App extends Component {
               {/* if localstorage的expire時間>現在時間，就可以看到Todo */}
               <Route
                 path="/todo"
-                render={() =>
-                  new Date(localStorage.getItem("expire")).getTime() >
-                  new Date().getTime() ? (
-                    <TodoList />
-                  ) : (
-                    <Redirect to="/login" />
-                  )
-                }
+                // render={() =>
+                //   new Date(localStorage.getItem("expire")).getTime() >
+                //   new Date().getTime() ? (
+                //     <TodoList />
+                //   ) : (
+                //     <Redirect to="/login" />
+                //   )
+                // }
+                render={() => <TodoList />}
               />
               <Route path="/practice_lifehacker">
                 {/* <Practice_lifehacker /> */}
