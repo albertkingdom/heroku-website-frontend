@@ -1,66 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.scss";
 import { withRouter, NavLink, Link } from "react-router-dom";
-import { useEffect } from "react";
-import $ from "jquery";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+
 const Header = (props) => {
-  useEffect(() => {
-    $(window).scroll(function () {
-      let scrolltop = $(window).scrollTop();
-
-      // if (scrolltop>=100){
-      //     $('header').css('background','rgba(0,0,0,1)')
-      // }else{
-      //     $('header').css('background','linear-gradient(to bottom, transparent, transparent 100%)')
-      // }
-    });
-  });
-
+  const [showNavItem, setShowNavItem] = useState(false);
   return (
     <>
-      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Navbar</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-               
-                <li className="nav-item">
-                    <a className="nav-link" href="/todo">Todo</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/ptt">Ptt</a>
-                </li>
-                
-            </ul>
-        </div>
-    </nav> */}
       <header className="d-flex justify-content-center">
-        <input type="checkbox" id="toggler"></input>
+        {/* <input type="checkbox" id="toggler"></input> */}
         <label htmlFor="toggler">
-          <div className="hamburger-container">
+          <div
+            className={`hamburger-container ${showNavItem ? "active" : ""}`}
+            onClick={() => setShowNavItem(!showNavItem)}
+          >
             <span></span>
             <span></span>
           </div>
         </label>
 
-        <div className="header-nav-items-rwd">
+        <div className={`header-nav-items-rwd ${showNavItem ? "active" : ""}`}>
           <ul>
             <li>
-              <Link className="nav-link" href="/" disabled>
+              <Link className="nav-link" to="/" disabled>
                 Home
               </Link>
             </li>
             <li>
-              <Link className="nav-link" href="/todo">
+              <Link
+                className="nav-link"
+                to="/todo"
+                onClick={() => setShowNavItem(false)}
+              >
                 Todo
               </Link>
             </li>
             <li>
-              <Link className="nav-link" href="/ptt">
+              <Link
+                className="nav-link"
+                to="/ptt"
+                onClick={() => setShowNavItem(false)}
+              >
                 PTT八卦版
               </Link>
             </li>
@@ -138,7 +120,7 @@ const Header = (props) => {
               </ul>
             </li> */}
             {/* login button */}
-            <span style={{ transform: "translateX(50px)", fontSize: "24px" }}>
+            {/* <span style={{ transform: "translateX(50px)", fontSize: "24px" }}>
               {props.auth ? (
                 <Link to="/logout">
                   <FontAwesomeIcon icon={faSignOutAlt} />
@@ -148,7 +130,7 @@ const Header = (props) => {
                   <FontAwesomeIcon icon={faSignInAlt} />
                 </Link>
               )}
-            </span>
+            </span> */}
           </ul>
         </div>
       </header>
