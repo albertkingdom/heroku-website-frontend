@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Modal } from "antd";
 import styles from "./Todo.module.scss";
-import { savetoserver, getDatafromserver } from "../actions/todoaction";
+import { savetoserver } from "../actions/todoaction";
 
-export default function NewTodo({ visible, toSetModalVisible }) {
+export default function NewTodo({ visible, toSetModalVisible, token }) {
   const [newtodo, setNewtodo] = useState("");
   const [title, setTitle] = useState("");
 
@@ -14,7 +14,7 @@ export default function NewTodo({ visible, toSetModalVisible }) {
   const handleSubmitNewTodo = () => {
     toSetModalVisible(false);
 
-    dispatch(savetoserver(newtodo, title));
+    dispatch(savetoserver(newtodo, title, token));
     setNewtodo("");
   };
   const handleCancel = () => {

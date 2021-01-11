@@ -4,7 +4,7 @@ const initialState = {
   todoList: [],
   completeTodo: [],
 };
-const reducer = (state = initialState, action) => {
+const todo = (state = initialState, action) => {
   switch (action.type) {
     case actiontype.ADD: {
       return {
@@ -86,4 +86,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default todo;

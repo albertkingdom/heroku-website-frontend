@@ -22,16 +22,20 @@ export const editTolist = (id) => {
   return { type: EDIT, payload: { editItemId: id } };
 };
 //儲存todo to server
-export const savetoserver = (todo, title) => {
-  return async (dispatch) => {
+export const savetoserver = (todo, title, token) => {
+  return async (dispatch, getState) => {
+    const {
+      user: { userId },
+    } = getState();
     const request = new Request(
-      "https://ptt-todolist-api.herokuapp.com/todolist/savetodb",
+      "https://ptt-todolist-api.herokuapp.com/todo/savetodb",
       {
         method: "POST",
-        body: JSON.stringify({ content: todo, title: title }),
+        body: JSON.stringify({ content: todo, title: title, userId }),
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
+          authorization: token,
         }),
       }
     );
@@ -46,22 +50,29 @@ export const savetoserver = (todo, title) => {
   };
 };
 //從database抓回資料
-export const getDatafromserver = () => {
+export const getDatafromserver = (token) => {
   return async (dispatch, getState) => {
+    const {
+      user: { userId },
+    } = getState();
     const response = await fetch(
-      "https://ptt-todolist-api.herokuapp.com/todolist/gettodo",
+      "https://ptt-todolist-api.herokuapp.com/todo/gettodo",
       {
-        method: "GET",
+        method: "POST",
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
+          authorization: token,
         }),
+        body: JSON.stringify({ userId }),
       }
     );
 
     const data = await response.json();
     // console.log(getState());
-    const { todoList, completeTodo } = getState(); //取得目前store
+    const {
+      todo: { todoList, completeTodo },
+    } = getState(); //取得目前store
     data.forEach((element) => {
       if (
         element.completed === 0 &&
@@ -93,7 +104,7 @@ export const getDatafromserver = () => {
   };
 };
 //刪除todo
-export const delDatafromserver = (id) => {
+export const delDatafromserver = (id, token) => {
   return async (dispatch) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -109,13 +120,14 @@ export const delDatafromserver = (id) => {
       let body = { delid: id };
 
       const request = new Request(
-        "https://ptt-todolist-api.herokuapp.com/todolist/deltodo",
+        "https://ptt-todolist-api.herokuapp.com/todo/deltodo",
         {
           method: "post",
           body: JSON.stringify(body),
           headers: new Headers({
             Accept: "application/json",
             "Content-Type": "application/json",
+            authorization: token,
           }),
         }
       );
@@ -129,16 +141,17 @@ export const delDatafromserver = (id) => {
   };
 };
 //完成更新todo
-export const updatetoserver = (id, editTodo) => {
+export const updatetoserver = (id, editTodo, token) => {
   let body = { editid: id, content: editTodo };
   return async (dispatch) => {
     const response = await fetch(
-      "https://ptt-todolist-api.herokuapp.com/todolist/updatetodo",
+      "https://ptt-todolist-api.herokuapp.com/todo/updatetodo",
       {
         method: "post",
         body: JSON.stringify(body),
         headers: new Headers({
           "Content-Type": "application/json",
+          authorization: token,
         }),
       }
     );
@@ -154,17 +167,18 @@ export const updatetoserver = (id, editTodo) => {
 };
 
 //將todo設定為已完成
-export const completeTodo = (id) => {
+export const completeTodo = (id, token) => {
   return async (dispatch) => {
     let body = { completeid: id };
 
     const response = await fetch(
-      "https://ptt-todolist-api.herokuapp.com/todolist/completetodo",
+      "https://ptt-todolist-api.herokuapp.com/todo/completetodo",
       {
         method: "put",
         body: JSON.stringify(body),
         headers: new Headers({
           "Content-Type": "application/json",
+          authorization: token,
         }),
       }
     );

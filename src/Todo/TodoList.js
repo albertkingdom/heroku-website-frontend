@@ -17,14 +17,15 @@ const { Panel } = Collapse;
 
 function TodoList(props) {
   const [visible, setVisible] = useState(false);
-  const currentTodo = useSelector((state) => state.todoList);
-  const completelist = useSelector((state) => state.completeTodo);
+  const currentTodo = useSelector((state) => state.todo.todoList);
+  const completelist = useSelector((state) => state.todo.completeTodo);
   const dispatch = useDispatch();
+  const { token } = props;
 
   //一開始，從database抓回資料，以下
   useEffect(() => {
-    dispatch(getDatafromserver());
-  }, [dispatch]);
+    dispatch(getDatafromserver(token));
+  }, [dispatch, token]);
 
   //從database抓回資料，以上
 
@@ -41,20 +42,24 @@ function TodoList(props) {
           +
         </button>
 
-        <NewTodo visible={visible} toSetModalVisible={toSetModalVisible} />
+        <NewTodo
+          visible={visible}
+          toSetModalVisible={toSetModalVisible}
+          token={token}
+        />
 
         <hr />
         <Collapse bordered={false} defaultActiveKey={["1"]}>
           <Panel header="未完成" key="1">
-            {currentTodo.length < 1 ? (
+            {/* {currentTodo.length < 1 ? (
               <Loading />
-            ) : (
-              <div className="row m-auto">
-                {currentTodo.map((todo) => (
-                  <TodoUndone todo={todo} key={todo.id} />
-                ))}
-              </div>
-            )}
+            ) : ( */}
+            <div className="row m-auto">
+              {currentTodo.map((todo) => (
+                <TodoUndone todo={todo} key={todo.id} token={token} />
+              ))}
+            </div>
+            {/* )} */}
           </Panel>
 
           <Panel header="已完成" key="2">

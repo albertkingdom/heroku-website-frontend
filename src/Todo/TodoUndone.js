@@ -7,7 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { updatetoserver, editTolist } from "../actions/todoaction";
 import styles from "./Todo.module.scss";
 
-export default function TodoUndone({ todo }) {
+export default function TodoUndone({ todo, token }) {
   const [editTodo, setEditTodo] = useState("");
 
   const dispatch = useDispatch();
@@ -24,8 +24,8 @@ export default function TodoUndone({ todo }) {
       className={`${styles.todocard} m-1 col-11  col-md-5 `}
       ref={cardRef}
     >
-      <DelButton id={todo.id} />
-      <CompleteButton id={todo.id} />
+      <DelButton id={todo.id} token={token} />
+      <CompleteButton id={todo.id} token={token} />
       {/* <AiOutlinePushpin style={{ fontSize: "24px" }} /> */}
       {/* 顏色選擇 */}
       <div className="d-flex">
@@ -72,7 +72,7 @@ export default function TodoUndone({ todo }) {
               value={editTodo}
               onChange={(e) => setEditTodo(e.target.value)}
               onBlur={() => {
-                dispatch(updatetoserver(todo.id, editTodo));
+                dispatch(updatetoserver(todo.id, editTodo, token));
               }}
             />
           </>

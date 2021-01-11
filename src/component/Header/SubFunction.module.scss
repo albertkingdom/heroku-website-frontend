@@ -1,0 +1,26 @@
+.SubFunction {
+  position: absolute;
+  width: 150px;
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  left: -20px;
+
+  ul {
+    li {
+      //   height: 30px;
+      padding: 5px;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+    li a {
+      padding: 0px;
+      font-size: inherit;
+      height: inherit;
+    }
+  }
+}
