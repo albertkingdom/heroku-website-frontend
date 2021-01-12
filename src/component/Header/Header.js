@@ -9,7 +9,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loadUserId } from "../../actions/useraction";
 import SubFunction from "./SubFunction";
 
@@ -71,6 +71,7 @@ const Header = ({ auth, changeAuth }) => {
                     changeAuth(false);
                     dispatch(loadUserId(""));
                     window.sessionStorage.removeItem("token");
+                    setShowNavItem(false);
                   }}
                 >
                   {/* // <FontAwesomeIcon icon={faSignOutAlt} /> */}
@@ -80,13 +81,21 @@ const Header = ({ auth, changeAuth }) => {
             ) : (
               <>
                 <li>
-                  <Link to="/signin" className="nav-link">
+                  <Link
+                    to="/signin"
+                    className="nav-link"
+                    onClick={() => setShowNavItem(false)}
+                  >
                     {/* <FontAwesomeIcon icon={faSignInAlt} /> */}
                     Sign In
                   </Link>
                 </li>
                 <li>
-                  <Link to="/register" className="nav-link">
+                  <Link
+                    to="/register"
+                    className="nav-link"
+                    onClick={() => setShowNavItem(false)}
+                  >
                     Register
                   </Link>
                 </li>
@@ -166,9 +175,9 @@ const Header = ({ auth, changeAuth }) => {
               </ul>
             </li> */}
             {/* login button */}
-            <li style={{ marginLeft: "20px" }}>
+            <li style={{ marginLeft: "20px", height: "50px" }}>
               <>
-                <div>
+                <div style={{ height: "50px", padding: ".5rem 1rem" }}>
                   <button
                     onClick={() => setOpenAvator(!openAvator)}
                     className={styles.avator}
@@ -179,7 +188,10 @@ const Header = ({ auth, changeAuth }) => {
                 {openAvator && (
                   <SubFunction
                     changeAuth={changeAuth}
-                    close={() => setOpenAvator(false)}
+                    close={() => {
+                      setOpenAvator(false);
+                      setShowNavItem(false);
+                    }}
                     auth={auth}
                   />
                 )}

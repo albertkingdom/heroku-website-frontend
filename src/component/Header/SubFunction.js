@@ -14,10 +14,16 @@ export default function SubFunction({ changeAuth, close, auth }) {
         {!auth ? (
           <>
             <li>
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin" onClick={() => close()}>
+                Sign In
+              </Link>
             </li>
             <li>
-              <Link to="/register" className={styles.register}>
+              <Link
+                to="/register"
+                className={styles.register}
+                onClick={() => close()}
+              >
                 Register
               </Link>
             </li>
