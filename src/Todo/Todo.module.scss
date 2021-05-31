@@ -1,19 +1,20 @@
 .todocard {
   box-shadow: 0 5px 5px gray;
-  $bgcolorlist: yellow, skyblue;
-  $random: random(length($bgcolorlist));
-  $background-color: nth($bgcolorlist, $random);
-  background-color: $background-color;
-  height: 300px;
+  // $bgcolorlist: yellow, skyblue;
+  // $random: random(length($bgcolorlist));
+  // $background-color: nth($bgcolorlist, $random);
+  background-color: white;
+  height: fit-content;
+  min-height: 300px;
   p {
     border-bottom: 1px solid coral;
   }
 }
 
 .card-del-btn {
-  position: absolute;
-  right: 0px;
-  float: right;
+  // position: absolute;
+  // right: 0px;
+  // float: right;
   margin: 5px;
   transition: 0.5s;
   background: transparent;
@@ -21,18 +22,19 @@
   span {
     display: none;
   }
-  &:hover {
-    span {
-      display: inline-block;
-    }
-  }
+  // &:hover {
+  //   span {
+  //     display: inline-block;
+  //   }
+  // }
 }
 .card-check-btn {
   @extend .card-del-btn;
-  right: 50px;
+  // right: 50px;
 }
 .card-edit-btn {
   @extend .card-del-btn;
+  // right: 100px;
 }
 
 .btn-add {

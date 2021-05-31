@@ -8,10 +8,16 @@ export const COMPLETE_EDIT = "COMPLETE_EDIT_TODOLIST";
 export const INITIALCOMPLETE = "INITIAL_COMPLETE_TODOLIST";
 
 //action creator
-export const addtolist = (str, id, completed = 0, title) => {
+export const addtolist = (str, id, completed = 0, title, imagebase64 = "") => {
   return {
     type: ADD,
-    payload: { listname: str, id: id, completed: completed, title: title },
+    payload: {
+      listname: str,
+      id: id,
+      completed: completed,
+      title: title,
+      imagebase64,
+    },
   };
 };
 export const deltodolist = (id) => {
@@ -22,7 +28,7 @@ export const editTolist = (id) => {
   return { type: EDIT, payload: { editItemId: id } };
 };
 //儲存todo to server
-export const savetoserver = (todo, title, token) => {
+export const savetoserver = (todo, title, image = "", token) => {
   return async (dispatch, getState) => {
     const {
       user: { userId },
@@ -31,7 +37,7 @@ export const savetoserver = (todo, title, token) => {
       "https://ptt-todolist-api.herokuapp.com/todo/savetodb",
       {
         method: "POST",
-        body: JSON.stringify({ content: todo, title: title, userId }),
+        body: JSON.stringify({ content: todo, title: title, image, userId }),
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -45,7 +51,7 @@ export const savetoserver = (todo, title, token) => {
 
     if (data.result.affectedRows === 1) {
       const { insertId } = data.result;
-      dispatch(addtolist(todo, insertId, 0, title));
+      dispatch(addtolist(todo, insertId, 0, title, image));
     }
   };
 };
@@ -83,7 +89,8 @@ export const getDatafromserver = (token) => {
             element.content,
             element.Id,
             element.completed,
-            element.title
+            element.title,
+            element.imagebase64
           )
         );
       } else if (
@@ -97,6 +104,7 @@ export const getDatafromserver = (token) => {
             content: element.content,
             completed: element.completed,
             title: element.title,
+            imagebase64: element.imagebase64,
           },
         });
       }

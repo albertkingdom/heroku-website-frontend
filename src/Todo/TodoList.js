@@ -63,7 +63,7 @@ function TodoList(props) {
           </Panel>
 
           <Panel header="已完成" key="2">
-            <div className="row">
+            <div className="row m-auto">
               {completelist.map((todo) => {
                 return <TodoDone key={todo.id} todo={todo} />;
               })}

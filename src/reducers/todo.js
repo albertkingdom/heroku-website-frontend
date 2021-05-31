@@ -17,6 +17,7 @@ const todo = (state = initialState, action) => {
             edit: false,
             completed: action.payload.completed,
             title: action.payload.title,
+            imagebase64: action.payload.imagebase64,
           },
         ],
       };
@@ -53,6 +54,7 @@ const todo = (state = initialState, action) => {
           edit: false,
           completed: action.payload.completed,
           title: action.payload.title,
+          imagebase64: action.payload.imagebase64,
         },
       ];
       return {

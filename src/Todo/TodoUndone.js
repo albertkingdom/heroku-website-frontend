@@ -2,9 +2,11 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import DelButton from "./DelButton";
 import CompleteButton from "./CompleteButton";
+import EditButton from "./EditButton";
+
 import { Card } from "react-bootstrap";
-import { AiOutlineEdit } from "react-icons/ai";
-import { updatetoserver, editTolist } from "../actions/todoaction";
+// import { AiOutlineEdit } from "react-icons/ai";
+import { updatetoserver } from "../actions/todoaction";
 import styles from "./Todo.module.scss";
 
 export default function TodoUndone({ todo, token }) {
@@ -21,46 +23,43 @@ export default function TodoUndone({ todo, token }) {
   return (
     <Card
       // style={{ width: "18rem" }}
-      className={`${styles.todocard} m-1 col-11  col-md-5 `}
+      className={`${styles.todocard} m-1 col-12 col-md-5 `}
       ref={cardRef}
     >
-      <DelButton id={todo.id} token={token} />
-      <CompleteButton id={todo.id} token={token} />
-      {/* <AiOutlinePushpin style={{ fontSize: "24px" }} /> */}
-      {/* 顏色選擇 */}
-      <div className="d-flex">
-        <div
-          className={`${styles["color-select"]} rounded-circle`}
-          style={{ background: "skyblue" }}
-          onClick={handleChangeBkgColor}
-        ></div>
-        <div
-          className={`${styles["color-select"]} rounded-circle`}
-          style={{ background: "orange" }}
-          onClick={handleChangeBkgColor}
-        ></div>
-        <div
-          className={`${styles["color-select"]} rounded-circle`}
-          style={{ background: "yellow" }}
-          onClick={handleChangeBkgColor}
-        ></div>
+      <div className="d-flex justify-content-between">
+        <div className="col-5 col-md-6 text-center">
+          <DelButton id={todo.id} token={token} />
+          <CompleteButton id={todo.id} token={token} />
+          <EditButton
+            id={todo.id}
+            content={todo.content}
+            setEditTodo={setEditTodo}
+          />
+        </div>
+        {/* 顏色選擇 */}
+        <div className="col-5 col-md-6 text-center">
+          <button
+            className={`${styles["color-select"]} rounded-circle`}
+            style={{ background: "skyblue" }}
+            onClick={handleChangeBkgColor}
+          ></button>
+          <button
+            className={`${styles["color-select"]} rounded-circle`}
+            style={{ background: "orange" }}
+            onClick={handleChangeBkgColor}
+          ></button>
+          <button
+            className={`${styles["color-select"]} rounded-circle`}
+            style={{ background: "yellow" }}
+            onClick={handleChangeBkgColor}
+          ></button>
+        </div>
       </div>
       <Card.Body>
         {!todo.edit ? (
           <>
             <Card.Title>{todo.title}</Card.Title>
-            <Card.Text>
-              {todo.content}
-              <span
-                className={styles["card-edit-btn"]}
-                onClick={() => {
-                  dispatch(editTolist(todo.id));
-                  setEditTodo(todo.content);
-                }}
-              >
-                <AiOutlineEdit />
-              </span>
-            </Card.Text>
+            <Card.Text className="m-3">{todo.content}</Card.Text>
           </>
         ) : (
           <>
@@ -78,6 +77,14 @@ export default function TodoUndone({ todo, token }) {
           </>
         )}
       </Card.Body>
+      {todo.imagebase64 ? (
+        <Card.Img
+          variant="bottom"
+          src={todo.imagebase64}
+          alt="img"
+          height="200"
+        />
+      ) : null}
     </Card>
   );
 }
